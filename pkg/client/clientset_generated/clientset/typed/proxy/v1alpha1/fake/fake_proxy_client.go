@@ -32,6 +32,10 @@ func (c *FakeProxyV1alpha1) KojiImageBuilds(namespace string) v1alpha1.KojiImage
 	return &FakeKojiImageBuilds{c, namespace}
 }
 
+func (c *FakeProxyV1alpha1) KojiImageBuildPackages(namespace string) v1alpha1.KojiImageBuildPackageInterface {
+	return &FakeKojiImageBuildPackages{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeProxyV1alpha1) RESTClient() rest.Interface {

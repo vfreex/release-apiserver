@@ -40,6 +40,7 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(proxy.SchemeGroupVersion,
 		&proxy.KojiImageBuild{},
 		&proxy.KojiImageBuildList{},
+		&proxy.KojiImageBuildPackage{},
 	)
 	return nil
 }

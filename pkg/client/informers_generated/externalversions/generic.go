@@ -55,6 +55,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=proxy.art.openshift.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("kojiimagebuilds"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Proxy().V1alpha1().KojiImageBuilds().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("kojiimagebuildpackages"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Proxy().V1alpha1().KojiImageBuildPackages().Informer()}, nil
 
 	}
 

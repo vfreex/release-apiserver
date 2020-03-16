@@ -27,6 +27,7 @@ import (
 type ProxyV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	KojiImageBuildsGetter
+	KojiImageBuildPackagesGetter
 }
 
 // ProxyV1alpha1Client is used to interact with features provided by the proxy.art.openshift.io group.
@@ -36,6 +37,10 @@ type ProxyV1alpha1Client struct {
 
 func (c *ProxyV1alpha1Client) KojiImageBuilds(namespace string) KojiImageBuildInterface {
 	return newKojiImageBuilds(c, namespace)
+}
+
+func (c *ProxyV1alpha1Client) KojiImageBuildPackages(namespace string) KojiImageBuildPackageInterface {
+	return newKojiImageBuildPackages(c, namespace)
 }
 
 // NewForConfig creates a new ProxyV1alpha1Client for the given config.

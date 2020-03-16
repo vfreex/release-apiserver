@@ -25,3 +25,11 @@ type KojiImageBuildListerExpansion interface{}
 // KojiImageBuildNamespaceListerExpansion allows custom methods to be added to
 // KojiImageBuildNamespaceLister.
 type KojiImageBuildNamespaceListerExpansion interface{}
+
+// KojiImageBuildPackageListerExpansion allows custom methods to be added to
+// KojiImageBuildPackageLister.
+type KojiImageBuildPackageListerExpansion interface{}
+
+// KojiImageBuildPackageNamespaceListerExpansion allows custom methods to be added to
+// KojiImageBuildPackageNamespaceLister.
+type KojiImageBuildPackageNamespaceListerExpansion interface{}

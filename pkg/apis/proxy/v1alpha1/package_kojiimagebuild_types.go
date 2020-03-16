@@ -23,28 +23,15 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// KojiImageBuild
-// +k8s:openapi-gen=true
-// +resource:path=kojiimagebuilds,strategy=KojiImageBuildStrategy,shortname=ki,rest=KojiImageBuildREST
-// +subresource:request=KojiImageBuildPackage,path=package,kind=KojiImageBuildPackage
-type KojiImageBuild struct {
+// +subresource-request
+type KojiImageBuildPackage struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-
-	Spec   KojiImageBuildSpec   `json:"spec,omitempty"`
-	Status KojiImageBuildStatus `json:"status,omitempty"`
+	Spec              KojiImageBuildPackageSpec   `json:"spec,omitempty"`
+	Status            KojiImageBuildPackageStatus `json:"status,omitempty"`
 }
-
-// KojiImageBuildSpec defines the desired state of KojiImageBuild
-type KojiImageBuildSpec struct {
-	Name    string `json:"name,omitempty"`
-	Version string `json:"version,omitempty"`
-	Release string `json:"release,omitempty"`
+type KojiImageBuildPackageSpec struct {
 }
-
-// KojiImageBuildStatus defines the observed state of KojiImageBuild
-type KojiImageBuildStatus struct {
-	KojiState     string `json:"kojiState,omitempty"`
-	KojiBuildLink string `json:"kojiBuildLink,omitempty"`
+type KojiImageBuildPackageStatus struct {
+	Packages map[string][]string `json:"packages,omitempty"`
 }
-

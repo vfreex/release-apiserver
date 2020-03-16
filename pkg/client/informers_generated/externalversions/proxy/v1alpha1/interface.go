@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// KojiImageBuilds returns a KojiImageBuildInformer.
 	KojiImageBuilds() KojiImageBuildInformer
+	// KojiImageBuildPackages returns a KojiImageBuildPackageInformer.
+	KojiImageBuildPackages() KojiImageBuildPackageInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // KojiImageBuilds returns a KojiImageBuildInformer.
 func (v *version) KojiImageBuilds() KojiImageBuildInformer {
 	return &kojiImageBuildInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// KojiImageBuildPackages returns a KojiImageBuildPackageInformer.
+func (v *version) KojiImageBuildPackages() KojiImageBuildPackageInformer {
+	return &kojiImageBuildPackageInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
