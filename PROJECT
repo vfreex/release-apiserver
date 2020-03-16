@@ -1,0 +1,4 @@
+
+version: "1"
+domain: art.openshift.io
+repo: github.com/vfreex/release-apiserver
