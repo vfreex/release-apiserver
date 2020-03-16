@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OCP Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -27,7 +25,7 @@ import (
 
 // KojiImageBuild
 // +k8s:openapi-gen=true
-// +resource:path=kojiimagebuilds,strategy=KojiImageBuildStrategy,shortname=ki
+// +resource:path=kojiimagebuilds,strategy=KojiImageBuildStrategy,shortname=ki,rest=KojiImageBuildREST
 type KojiImageBuild struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -38,8 +36,13 @@ type KojiImageBuild struct {
 
 // KojiImageBuildSpec defines the desired state of KojiImageBuild
 type KojiImageBuildSpec struct {
+	Name    string `json:"name,omitempty"`
+	Version string `json:"version,omitempty"`
+	Release string `json:"release,omitempty"`
 }
 
 // KojiImageBuildStatus defines the observed state of KojiImageBuild
 type KojiImageBuildStatus struct {
+	KojiState     string `json:"kojiState,omitempty"`
+	KojiBuildLink string `json:"kojiBuildLink,omitempty"`
 }
