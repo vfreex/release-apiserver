@@ -1,0 +1,7 @@
+note: ReleaseStream Example
+sample: |
+  apiVersion: release.art.openshift.io/v1alpha1
+  kind: ReleaseStream
+  metadata:
+    name: releasestream-example
+  spec:
