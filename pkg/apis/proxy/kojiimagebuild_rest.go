@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"github.com/kolo/xmlrpc"
+	//metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -125,6 +126,21 @@ func (r *KojiImageBuildREST) ShortNames() []string {
 func (r *KojiImageBuildREST) Categories() []string {
 	return []string{""}
 }
+
+func (r *KojiImageBuildREST) NewList() runtime.Object {
+	return &KojiImageBuildList{}
+}
+
+//func (r *KojiImageBuildREST) List(ctx context.Context, options *metainternalversion.ListOptions) (runtime.Object, error) {
+//	return &KojiImageBuildList{Items: []KojiImageBuild{
+//		{
+//			ObjectMeta: metav1.ObjectMeta{Name: "foo"},
+//		},
+//		{
+//			ObjectMeta: metav1.ObjectMeta{Name: "bar"},
+//		},
+//	}}, nil
+//}
 
 func NewKojiImageBuildREST(optsGetter generic.RESTOptionsGetter) rest.Storage {
 	groupResource := schema.GroupResource{
