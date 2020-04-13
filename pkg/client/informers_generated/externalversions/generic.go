@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/vfreex/release-apiserver/pkg/apis/proxy/v1alpha1"
+	v1alpha1 "github.com/vfreex/release-apiserver/pkg/apis/art/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -52,11 +52,21 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=proxy.art.openshift.io, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("kojiimagebuilds"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Proxy().V1alpha1().KojiImageBuilds().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("kojiimagebuildpackages"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Proxy().V1alpha1().KojiImageBuildPackages().Informer()}, nil
+	// Group=art.openshift.io, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("advisories"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().Advisories().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("builds"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().Builds().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("components"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().Components().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("rpmcomposes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().RPMComposes().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("releases"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().Releases().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("releasestreams"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().ReleaseStreams().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("sourcerevisions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Art().V1alpha1().SourceRevisions().Informer()}, nil
 
 	}
 

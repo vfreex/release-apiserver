@@ -1,0 +1,7 @@
+note: Build Example
+sample: |
+  apiVersion: art.openshift.io/v1alpha1
+  kind: Build
+  metadata:
+    name: build-example
+  spec:

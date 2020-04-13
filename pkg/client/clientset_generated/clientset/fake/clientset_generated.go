@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset"
-	proxyv1alpha1 "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset/typed/proxy/v1alpha1"
-	fakeproxyv1alpha1 "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset/typed/proxy/v1alpha1/fake"
+	artv1alpha1 "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset/typed/art/v1alpha1"
+	fakeartv1alpha1 "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset/typed/art/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -76,7 +76,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// ProxyV1alpha1 retrieves the ProxyV1alpha1Client
-func (c *Clientset) ProxyV1alpha1() proxyv1alpha1.ProxyV1alpha1Interface {
-	return &fakeproxyv1alpha1.FakeProxyV1alpha1{Fake: &c.Fake}
+// ArtV1alpha1 retrieves the ArtV1alpha1Client
+func (c *Clientset) ArtV1alpha1() artv1alpha1.ArtV1alpha1Interface {
+	return &fakeartv1alpha1.FakeArtV1alpha1{Fake: &c.Fake}
 }

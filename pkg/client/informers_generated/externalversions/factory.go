@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import (
 	time "time"
 
 	clientset "github.com/vfreex/release-apiserver/pkg/client/clientset_generated/clientset"
+	art "github.com/vfreex/release-apiserver/pkg/client/informers_generated/externalversions/art"
 	internalinterfaces "github.com/vfreex/release-apiserver/pkg/client/informers_generated/externalversions/internalinterfaces"
-	proxy "github.com/vfreex/release-apiserver/pkg/client/informers_generated/externalversions/proxy"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Proxy() proxy.Interface
+	Art() art.Interface
 }
 
-func (f *sharedInformerFactory) Proxy() proxy.Interface {
-	return proxy.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Art() art.Interface {
+	return art.New(f, f.namespace, f.tweakListOptions)
 }

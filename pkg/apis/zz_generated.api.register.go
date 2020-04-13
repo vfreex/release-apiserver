@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,16 +19,16 @@ limitations under the License.
 package apis
 
 import (
-	"github.com/vfreex/release-apiserver/pkg/apis/proxy"
-	_ "github.com/vfreex/release-apiserver/pkg/apis/proxy/install" // Install the proxy group
-	proxyv1alpha1 "github.com/vfreex/release-apiserver/pkg/apis/proxy/v1alpha1"
+	"github.com/vfreex/release-apiserver/pkg/apis/art"
+	_ "github.com/vfreex/release-apiserver/pkg/apis/art/install" // Install the art group
+	artv1alpha1 "github.com/vfreex/release-apiserver/pkg/apis/art/v1alpha1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"sigs.k8s.io/apiserver-builder-alpha/pkg/builders"
 )
 
 var (
 	localSchemeBuilder = runtime.SchemeBuilder{
-		proxyv1alpha1.AddToScheme,
+		artv1alpha1.AddToScheme,
 	}
 	AddToScheme = localSchemeBuilder.AddToScheme
 )
@@ -37,19 +37,19 @@ var (
 // so they can be registered with the apiserver
 func GetAllApiBuilders() []*builders.APIGroupBuilder {
 	return []*builders.APIGroupBuilder{
-		GetProxyAPIBuilder(),
+		GetArtAPIBuilder(),
 	}
 }
 
-var proxyApiGroup = builders.NewApiGroupBuilder(
-	"proxy.art.openshift.io",
-	"github.com/vfreex/release-apiserver/pkg/apis/proxy").
-	WithUnVersionedApi(proxy.ApiVersion).
+var artApiGroup = builders.NewApiGroupBuilder(
+	"art.openshift.io",
+	"github.com/vfreex/release-apiserver/pkg/apis/art").
+	WithUnVersionedApi(art.ApiVersion).
 	WithVersionedApis(
-		proxyv1alpha1.ApiVersion,
+		artv1alpha1.ApiVersion,
 	).
 	WithRootScopedKinds()
 
-func GetProxyAPIBuilder() *builders.APIGroupBuilder {
-	return proxyApiGroup
+func GetArtAPIBuilder() *builders.APIGroupBuilder {
+	return artApiGroup
 }
