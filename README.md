@@ -1,5 +1,29 @@
+# [Experimental] OpenShift Release APIServer
 
+See sample API object YAMLs under `sample/`.
+
+## Build
 
 ```bash
-curl localhost:8080/apis/proxy.art.openshift.io/v1alpha1/namespaces/default/kojiimagebuilds/openshift-jenkins-2-container-v4.4.0-202003160957/package
+go build -o bin/apiserver cmd/apiserver/main.go
+go build -o bin/controller-manager cmd/manager/main.go
+```
+
+## Run the apiserver locally
+
+### Directly execute
+
+```bash
+# assume etc is running at http://localhost:2379
+bin/apiserver \
+    --etcd-servers=http://localhost:2379 \
+    --secure-port=9443 \
+    --insecure-port=8080 \
+    --insecure-bind-address=127.0.0.1 
+    --delegated-auth=false
+```
+
+### Use apiserver-boot
+```bash
+apiserver-boot run local --generate=false
 ```

@@ -1,0 +1,8 @@
+/bin/
+/config/
+/*.etcd/
+/apiserver.local.config/
+/*kubeconfig
+/*.report
+.*
+!.gitignore

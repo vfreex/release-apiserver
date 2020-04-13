@@ -1,5 +1,0 @@
-apiVersion: proxy.art.openshift.io/v1alpha1
-kind: KojiImageBuild
-metadata:
-  name: kojiimagebuild-example
-spec:

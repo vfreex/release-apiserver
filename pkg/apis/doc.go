@@ -1,6 +1,6 @@
 
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ limitations under the License.
 
 
 
-//go:generate go run ../../vendor/sigs.k8s.io/apiserver-builder-alpha/cmd/apiregister-gen/main.go --input-dirs ./... -h ../../boilerplate.go.txt
+//go:generate apiregister-gen --input-dirs ./... -h ../../boilerplate.go.txt
 
 //
-// +domain=art.openshift.io
+// +domain=openshift.io
 
 package apis
 

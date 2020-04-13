@@ -1,6 +1,6 @@
 
 /*
-Copyright 2020 The OCP Release APIServer Authors.
+Copyright 2020 The OpenShift Release APIServer Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ func main() {
 	version := "v0"
 
 	err := server.StartApiServerWithOptions(&server.StartOptions{
-		EtcdPath:         "/registry/art.openshift.io",
+		EtcdPath:         "/registry/openshift.io",
 		Apis:             apis.GetAllApiBuilders(),
 		Openapidefs:      openapi.GetOpenAPIDefinitions,
 		Title:            "Api",
