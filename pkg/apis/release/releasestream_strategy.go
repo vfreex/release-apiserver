@@ -32,5 +32,14 @@ func (ReleaseStreamStrategy) Validate(ctx context.Context, obj runtime.Object) f
 	klog.V(5).Infof("Validating fields for ReleaseStream %s", o.Name)
 	errors := field.ErrorList{}
 	// perform validation here and add to errors using field.Invalid
+	if o.Spec.OcpBuildData.Git.Url == "" {
+		errors = append(errors, field.Invalid(field.NewPath("spec", "ocpBuildData", "git", "url"), o.Spec.OcpBuildData.Git.Url, "url may not be empty."))
+	}
+	if o.Spec.OcpBuildData.Git.Ref == "" {
+		errors = append(errors, field.Invalid(field.NewPath("spec", "ocpBuildData", "git", "ref"), o.Spec.OcpBuildData.Git.Ref, "ref may not be empty."))
+	}
+	if o.Spec.OcpBuildData.Git.Path == "" {
+		errors = append(errors, field.Invalid(field.NewPath("spec", "ocpBuildData", "git", "path"), o.Spec.OcpBuildData.Git.Path, "path may not be empty."))
+	}
 	return errors
 }

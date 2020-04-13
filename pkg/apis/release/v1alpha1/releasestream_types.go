@@ -38,20 +38,19 @@ type ReleaseStream struct {
 
 // ReleaseStreamSpec defines the desired state of ReleaseStream
 type ReleaseStreamSpec struct {
-	OcpBuildData OcpBuildData `json:"ocpBuildData,omitempty"`
+	OcpBuildData ReleaseStreamOcpBuildData `json:"ocpBuildData,omitempty"`
 }
 
 // ReleaseStreamStatus defines the observed state of ReleaseStream
 type ReleaseStreamStatus struct {
 }
 
-type OcpBuildData struct {
-	Git GitSource `json:"git,omitempty"`
+type ReleaseStreamOcpBuildData struct {
+	Git ReleaseStreamGitSource `json:"git,omitempty"`
 }
 
-type GitSource struct {
+type ReleaseStreamGitSource struct {
 	Url string `json:"url,omitempty"`
 	Ref string `json:"ref,omitempty"`
-	// +kubebuilder:validation:MinLength=1
 	Path string `json:"path,omitempty"`
 }

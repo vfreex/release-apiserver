@@ -77,16 +77,6 @@ func Resource(resource string) schema.GroupResource {
 	return SchemeGroupVersion.WithResource(resource).GroupResource()
 }
 
-type GitSource struct {
-	Url  string
-	Ref  string
-	Path string
-}
-
-type OcpBuildData struct {
-	Git GitSource
-}
-
 // +genclient
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -98,8 +88,18 @@ type ReleaseStream struct {
 	Status ReleaseStreamStatus
 }
 
+type ReleaseStreamGitSource struct {
+	Url  string
+	Ref  string
+	Path string
+}
+
+type ReleaseStreamOcpBuildData struct {
+	Git ReleaseStreamGitSource
+}
+
 type ReleaseStreamSpec struct {
-	OcpBuildData OcpBuildData
+	OcpBuildData ReleaseStreamOcpBuildData
 }
 
 type ReleaseStreamStatus struct {
