@@ -38,8 +38,20 @@ func Install(scheme *runtime.Scheme) {
 
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(release.SchemeGroupVersion,
+		&release.Advisory{},
+		&release.AdvisoryList{},
+		&release.Build{},
+		&release.BuildList{},
+		&release.Component{},
+		&release.ComponentList{},
+		&release.Payload{},
+		&release.PayloadList{},
+		&release.Release{},
+		&release.ReleaseList{},
 		&release.ReleaseStream{},
 		&release.ReleaseStreamList{},
+		&release.SourceRevision{},
+		&release.SourceRevisionList{},
 	)
 	return nil
 }

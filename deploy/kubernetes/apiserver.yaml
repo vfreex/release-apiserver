@@ -1,0 +1,196 @@
+#apiVersion: apiregistration.k8s.io/v1
+#kind: APIService
+#metadata:
+#  name: v1alpha1.release.art.openshift.io
+#  labels:
+#    api: release-apiserver
+#    apiserver: "true"
+#spec:
+#  version: v1alpha1
+#  group: release.art.openshift.io
+#  groupPriorityMinimum: 2000
+#  service:
+#    name: release-apiserver
+#    namespace: art-build-dev
+#  versionPriority: 10
+#  caBundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUR3ekNDQXF1Z0F3SUJBZ0lVVmN1NHdVRkJUaGFEV2E3ZEltaGZEem5ibnJRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd2NURUxNQWtHQTFVRUJoTUNkVzR4Q3pBSkJnTlZCQWdNQW5OME1Rb3dDQVlEVlFRSERBRnNNUW93Q0FZRApWUVFLREFGdk1Rc3dDUVlEVlFRTERBSnZkVEV3TUM0R0ExVUVBd3duY21Wc1pXRnpaUzFoY0dselpYSjJaWEl0ClkyVnlkR2xtYVdOaGRHVXRZWFYwYUc5eWFYUjVNQjRYRFRJd01EUXhNekV5TURneE1sb1hEVEl4TURReE16RXkKTURneE1sb3djVEVMTUFrR0ExVUVCaE1DZFc0eEN6QUpCZ05WQkFnTUFuTjBNUW93Q0FZRFZRUUhEQUZzTVFvdwpDQVlEVlFRS0RBRnZNUXN3Q1FZRFZRUUxEQUp2ZFRFd01DNEdBMVVFQXd3bmNtVnNaV0Z6WlMxaGNHbHpaWEoyClpYSXRZMlZ5ZEdsbWFXTmhkR1V0WVhWMGFHOXlhWFI1TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEEKTUlJQkNnS0NBUUVBdTUzODNYQ2xZMXRXOVZZTnFnRm9DLzdFNHhBSGlUdk5UQ1lSZiszQm94d3ZhaUIrVEp2cgpWUGM2R1JUNVNrT2c1SXErY0J0RjU5M3BVK2wyRXNjNnIxWjhQY2ltSDFvWEljT2htNzJzRDRnczhpeXBaY2o2Cm5BcHNQMzBSMSt4RE84VTlpRFhuNTJNWTRDK28vRkZCMU1HVldUMFpUN0tic3ZDTDc2R0lFOUxHUVVSS2crMk0KQTExNDBWYTRrdWNDMndKeUdsdFg2dStoMzIxWXRWY2k1SEhJSzVWSGluSFBXd3pmUG52enNlTGU2QkF5TjdVLwo5N1FWb0ZMcVBMR1Y4dzNSTnZlNU9uTEpWOWZyS1pXY2pmMHRqUnZjNmF6ZmZOaFZ4QitoWklTYXR2QTQwRktjClVnclE4YVppcFpNWElQNGlrQUN4N2V6QkVxdlhmQWVTb1FJREFRQUJvMU13VVRBZEJnTlZIUTRFRmdRVVMrSC8KQWc3OVNPaTVHNjJWWVBDSTJ1aklnY293SHdZRFZSMGpCQmd3Rm9BVVMrSC9BZzc5U09pNUc2MlZZUENJMnVqSQpnY293RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBZmprU3liK3h6aDN1Ckk2VXkvQUxtSGkrSEczclNQN1phWThFaTU1bGdxa21UT21zcndxYzNiZnN1eWRPU1RGYktJY1owMnRwOS95cmYKNEwrNUR1WGJMeWU1WjRUYjA4TCtSRkRxeThmMkdqWlJtZTdzcmpLVDNjblR1YnQxMnFPOW9tbTRLbDJVOWgvYwplcEx0d2F1QXZheU9RVXM1ai8waFhNWFVsV0FaZlZtMnp3MGg0THhlOVFZcHV3M3lwVFNDa2xURXJSREZXdWt5Cnd3N3ErSDBWSW1CWWI4NnNTUkVRQ091eTF0RU9CdXdLRTZ6bWFPRVJCdVVQS2NBWkx0V1JmMU1rdFhWQUtLNVUKNXFyS0xFYzl6SXNocStIcWQ0V0tlT0lzb0IvVFJEc0J5UmZRRTNzendQU0RmRitoeWdLVnNrdkFKR3lqMFI0bAp2NDZXQmM3T1BBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+#---
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-apiserver
+  namespace: art-build-dev
+  labels:
+    api: release-apiserver
+    apiserver: "true"
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    api: release-apiserver
+    apiserver: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-apiserver
+  namespace: art-build-dev
+  labels:
+    api: release-apiserver
+    apiserver: "true"
+spec:
+  selector:
+    matchLabels:
+      api: release-apiserver
+      apiserver: "true"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        api: release-apiserver
+        apiserver: "true"
+    spec:
+      containers:
+      - name: apiserver
+        image: rayson/release-apiserver:latest
+        volumeMounts:
+        - name: apiserver-certs
+          mountPath: /apiserver.local.config/certificates
+          readOnly: true
+        command:
+        - "./apiserver"
+        args:
+        - "--etcd-servers=http://etcd-svc:2379"
+        - "--tls-cert-file=/apiserver.local.config/certificates/tls.crt"
+        - "--tls-private-key-file=/apiserver.local.config/certificates/tls.key"
+        - "--audit-log-path=-"
+        - "--audit-log-maxage=0"
+        - "--audit-log-maxbackup=0"
+        - "--secure-port=9443"
+        - "--delegated-auth=false"
+        - "--client-ca-file=/apiserver.local.config/certificates/client-ca.crt"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 20Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+#      - name: controller
+#        image: rayson/release-apiserver:latest
+#        command:
+#        - "./controller-manager"
+#        args:
+#        resources:
+#          requests:
+#            cpu: 100m
+#            memory: 20Mi
+#          limits:
+#            cpu: 100m
+#            memory: 30Mi
+      volumes:
+      - name: apiserver-certs
+        secret:
+          secretName: release-apiserver
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etcd
+  namespace: art-build-dev
+spec:
+  selector:
+    matchLabels:
+      app: etcd
+  serviceName: "etcd"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: etcd
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: etcd
+        image: quay.io/coreos/etcd:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 20Mi
+          limits:
+            cpu: 100m
+            memory: 30Mi
+        env:
+        - name: ETCD_DATA_DIR
+          value: /etcd-data-dir
+        command:
+        - /usr/local/bin/etcd
+        - --listen-client-urls
+        - http://0.0.0.0:2379
+        - --advertise-client-urls
+        - http://localhost:2379
+        ports:
+        - containerPort: 2379
+        volumeMounts:
+        - name: etcd-data-dir
+          mountPath: /etcd-data-dir
+        readinessProbe:
+          httpGet:
+            port: 2379
+            path: /health
+          failureThreshold: 1
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            port: 2379
+            path: /health
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+  volumeClaimTemplates:
+  - metadata:
+     name: etcd-data-dir
+     annotations:
+        volume.beta.kubernetes.io/storage-class: dynamic-nfs
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+         storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: etcd-svc
+  namespace: art-build-dev
+  labels:
+    app: etcd
+spec:
+  ports:
+  - port: 2379
+    name: etcd
+    targetPort: 2379
+  selector:
+    app: etcd
+---
+#apiVersion: v1
+#kind: Secret
+#type: kubernetes.io/tls
+#metadata:
+#  name: release-apiserver
+#  namespace: art-build-dev
+#  labels:
+#    api: release-apiserver
+#    apiserver: "true"
+#data:
+#  tls.crt: #
+#  tls.key: #
+#  client-ca.crt: #

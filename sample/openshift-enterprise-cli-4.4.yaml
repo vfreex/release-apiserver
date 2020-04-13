@@ -1,0 +1,17 @@
+apiVersion: release.art.openshift.io/v1alpha1
+kind: Component
+metadata:
+  name: openshift-enterprise-cli-4.4
+  labels:
+    release-stream: openshift-4.4
+    release: openshift-4.4.0-rc.8
+spec:
+  source:
+    git:
+      url: https://github.com/openshift/oc.git
+      ref: release-4.4
+      path: /
+  distGit:
+    namespace: containers
+    repository: openshift-enterprise-cli
+    instance: https://pkgs.devel.redhat.com/

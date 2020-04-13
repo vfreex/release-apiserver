@@ -24,8 +24,20 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// Advisories returns a AdvisoryInformer.
+	Advisories() AdvisoryInformer
+	// Builds returns a BuildInformer.
+	Builds() BuildInformer
+	// Components returns a ComponentInformer.
+	Components() ComponentInformer
+	// Payloads returns a PayloadInformer.
+	Payloads() PayloadInformer
+	// Releases returns a ReleaseInformer.
+	Releases() ReleaseInformer
 	// ReleaseStreams returns a ReleaseStreamInformer.
 	ReleaseStreams() ReleaseStreamInformer
+	// SourceRevisions returns a SourceRevisionInformer.
+	SourceRevisions() SourceRevisionInformer
 }
 
 type version struct {
@@ -39,7 +51,37 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// Advisories returns a AdvisoryInformer.
+func (v *version) Advisories() AdvisoryInformer {
+	return &advisoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Builds returns a BuildInformer.
+func (v *version) Builds() BuildInformer {
+	return &buildInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Components returns a ComponentInformer.
+func (v *version) Components() ComponentInformer {
+	return &componentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Payloads returns a PayloadInformer.
+func (v *version) Payloads() PayloadInformer {
+	return &payloadInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Releases returns a ReleaseInformer.
+func (v *version) Releases() ReleaseInformer {
+	return &releaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ReleaseStreams returns a ReleaseStreamInformer.
 func (v *version) ReleaseStreams() ReleaseStreamInformer {
 	return &releaseStreamInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SourceRevisions returns a SourceRevisionInformer.
+func (v *version) SourceRevisions() SourceRevisionInformer {
+	return &sourceRevisionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

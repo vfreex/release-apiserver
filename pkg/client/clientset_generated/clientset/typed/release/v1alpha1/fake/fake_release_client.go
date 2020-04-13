@@ -28,8 +28,32 @@ type FakeReleaseV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeReleaseV1alpha1) Advisories(namespace string) v1alpha1.AdvisoryInterface {
+	return &FakeAdvisories{c, namespace}
+}
+
+func (c *FakeReleaseV1alpha1) Builds(namespace string) v1alpha1.BuildInterface {
+	return &FakeBuilds{c, namespace}
+}
+
+func (c *FakeReleaseV1alpha1) Components(namespace string) v1alpha1.ComponentInterface {
+	return &FakeComponents{c, namespace}
+}
+
+func (c *FakeReleaseV1alpha1) Payloads(namespace string) v1alpha1.PayloadInterface {
+	return &FakePayloads{c, namespace}
+}
+
+func (c *FakeReleaseV1alpha1) Releases(namespace string) v1alpha1.ReleaseInterface {
+	return &FakeReleases{c, namespace}
+}
+
 func (c *FakeReleaseV1alpha1) ReleaseStreams(namespace string) v1alpha1.ReleaseStreamInterface {
 	return &FakeReleaseStreams{c, namespace}
+}
+
+func (c *FakeReleaseV1alpha1) SourceRevisions(namespace string) v1alpha1.SourceRevisionInterface {
+	return &FakeSourceRevisions{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

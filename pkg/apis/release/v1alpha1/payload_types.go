@@ -25,32 +25,21 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ReleaseStream
+// Payload
 // +k8s:openapi-gen=true
-// +resource:path=releasestreams,shortname=rs,strategy=ReleaseStreamStrategy
-type ReleaseStream struct {
+// +resource:path=payloads,shortname=pl,strategy=PayloadStrategy
+type Payload struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ReleaseStreamSpec   `json:"spec,omitempty"`
-	Status ReleaseStreamStatus `json:"status,omitempty"`
+	Spec   PayloadSpec   `json:"spec,omitempty"`
+	Status PayloadStatus `json:"status,omitempty"`
 }
 
-// ReleaseStreamSpec defines the desired state of ReleaseStream
-type ReleaseStreamSpec struct {
-	OcpBuildData ReleaseStreamOcpBuildData `json:"ocpBuildData,omitempty"`
+// PayloadSpec defines the desired state of Payload
+type PayloadSpec struct {
 }
 
-// ReleaseStreamStatus defines the observed state of ReleaseStream
-type ReleaseStreamStatus struct {
-}
-
-type ReleaseStreamOcpBuildData struct {
-	Git OcpBuildDataGitSource `json:"git,omitempty"`
-}
-
-type OcpBuildDataGitSource struct {
-	Url string `json:"url"`
-	Ref string `json:"ref"`
-	Path string `json:"path,omitempty"`
+// PayloadStatus defines the observed state of Payload
+type PayloadStatus struct {
 }

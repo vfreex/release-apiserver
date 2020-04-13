@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -25,32 +23,38 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ReleaseStream
+// Build
 // +k8s:openapi-gen=true
-// +resource:path=releasestreams,shortname=rs,strategy=ReleaseStreamStrategy
-type ReleaseStream struct {
+// +resource:path=builds,shortname=b,strategy=BuildStrategy
+type Build struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ReleaseStreamSpec   `json:"spec,omitempty"`
-	Status ReleaseStreamStatus `json:"status,omitempty"`
+	Spec   BuildSpec   `json:"spec,omitempty"`
+	Status BuildStatus `json:"status,omitempty"`
 }
 
-// ReleaseStreamSpec defines the desired state of ReleaseStream
-type ReleaseStreamSpec struct {
-	OcpBuildData ReleaseStreamOcpBuildData `json:"ocpBuildData,omitempty"`
+// BuildSpec defines the desired state of Build
+type BuildSpec struct {
+	Type    string           `json:"type"`
+	Brew    BrewBuild        `json:"brew"`
+	Jenkins BuildJenkinsInfo `json:"jenkins,omitempty"`
 }
 
-// ReleaseStreamStatus defines the observed state of ReleaseStream
-type ReleaseStreamStatus struct {
+type BrewBuild struct {
+	Name       string `json:"name"`
+	Version    string `json:"version"`
+	Release    string `json:"release"`
+	NVR        string `json:"nvr,omitempty"`
+	Target     string `json:"target,omitempty"`
+	TaskNumber int    `json:"taskNumber,omitempty"`
+	Instance   string `json:"instance,omitempty"`
 }
 
-type ReleaseStreamOcpBuildData struct {
-	Git OcpBuildDataGitSource `json:"git,omitempty"`
+type BuildJenkinsInfo struct {
+	BuildUrl string `json:"buildUrl,omitempty"`
 }
 
-type OcpBuildDataGitSource struct {
-	Url string `json:"url"`
-	Ref string `json:"ref"`
-	Path string `json:"path,omitempty"`
+// BuildStatus defines the observed state of Build
+type BuildStatus struct {
 }

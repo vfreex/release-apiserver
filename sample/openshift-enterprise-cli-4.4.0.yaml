@@ -1,0 +1,9 @@
+apiVersion: release.art.openshift.io/v1alpha1
+kind: SourceRevision
+metadata:
+  name: openshift-enterprise-cli-4.4.0
+  labels:
+    release-stream: openshift-4.4
+    release: openshift-4.4.0-rc.8
+spec:
+  componentName: openshift-enterprise-cli-4.4

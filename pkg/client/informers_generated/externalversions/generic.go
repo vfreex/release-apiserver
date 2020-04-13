@@ -53,8 +53,20 @@ func (f *genericInformer) Lister() cache.GenericLister {
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
 	// Group=release.art.openshift.io, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("advisories"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().Advisories().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("builds"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().Builds().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("components"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().Components().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("payloads"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().Payloads().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("releases"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().Releases().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("releasestreams"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().ReleaseStreams().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("sourcerevisions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Release().V1alpha1().SourceRevisions().Informer()}, nil
 
 	}
 

@@ -32,12 +32,42 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Advisory":                  schema_pkg_apis_release_v1alpha1_Advisory(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisoryList":              schema_pkg_apis_release_v1alpha1_AdvisoryList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisorySpec":              schema_pkg_apis_release_v1alpha1_AdvisorySpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisoryStatus":            schema_pkg_apis_release_v1alpha1_AdvisoryStatus(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BrewBuild":                 schema_pkg_apis_release_v1alpha1_BrewBuild(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Build":                     schema_pkg_apis_release_v1alpha1_Build(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildJenkinsInfo":          schema_pkg_apis_release_v1alpha1_BuildJenkinsInfo(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildList":                 schema_pkg_apis_release_v1alpha1_BuildList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildSpec":                 schema_pkg_apis_release_v1alpha1_BuildSpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildStatus":               schema_pkg_apis_release_v1alpha1_BuildStatus(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Component":                 schema_pkg_apis_release_v1alpha1_Component(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentDistGit":          schema_pkg_apis_release_v1alpha1_ComponentDistGit(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentGitSource":        schema_pkg_apis_release_v1alpha1_ComponentGitSource(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentList":             schema_pkg_apis_release_v1alpha1_ComponentList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSource":           schema_pkg_apis_release_v1alpha1_ComponentSource(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSpec":             schema_pkg_apis_release_v1alpha1_ComponentSpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentStatus":           schema_pkg_apis_release_v1alpha1_ComponentStatus(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.OcpBuildDataGitSource":     schema_pkg_apis_release_v1alpha1_OcpBuildDataGitSource(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Payload":                   schema_pkg_apis_release_v1alpha1_Payload(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadList":               schema_pkg_apis_release_v1alpha1_PayloadList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadSpec":               schema_pkg_apis_release_v1alpha1_PayloadSpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadStatus":             schema_pkg_apis_release_v1alpha1_PayloadStatus(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Release":                   schema_pkg_apis_release_v1alpha1_Release(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseList":               schema_pkg_apis_release_v1alpha1_ReleaseList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseSpec":               schema_pkg_apis_release_v1alpha1_ReleaseSpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStatus":             schema_pkg_apis_release_v1alpha1_ReleaseStatus(ref),
 		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStream":             schema_pkg_apis_release_v1alpha1_ReleaseStream(ref),
-		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamGitSource":    schema_pkg_apis_release_v1alpha1_ReleaseStreamGitSource(ref),
 		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamList":         schema_pkg_apis_release_v1alpha1_ReleaseStreamList(ref),
 		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamOcpBuildData": schema_pkg_apis_release_v1alpha1_ReleaseStreamOcpBuildData(ref),
 		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamSpec":         schema_pkg_apis_release_v1alpha1_ReleaseStreamSpec(ref),
 		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamStatus":       schema_pkg_apis_release_v1alpha1_ReleaseStreamStatus(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseVersion":            schema_pkg_apis_release_v1alpha1_ReleaseVersion(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevision":            schema_pkg_apis_release_v1alpha1_SourceRevision(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionList":        schema_pkg_apis_release_v1alpha1_SourceRevisionList(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionSpec":        schema_pkg_apis_release_v1alpha1_SourceRevisionSpec(ref),
+		"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionStatus":      schema_pkg_apis_release_v1alpha1_SourceRevisionStatus(ref),
 		"k8s.io/api/apps/v1.ControllerRevision":                                                   schema_k8sio_api_apps_v1_ControllerRevision(ref),
 		"k8s.io/api/apps/v1.ControllerRevisionList":                                               schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
 		"k8s.io/api/apps/v1.DaemonSet":                                                            schema_k8sio_api_apps_v1_DaemonSet(ref),
@@ -326,6 +356,842 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	}
 }
 
+func schema_pkg_apis_release_v1alpha1_Advisory(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Advisory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisorySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisoryStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisorySpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.AdvisoryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_AdvisoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Advisory"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Advisory", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_AdvisorySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "AdvisorySpec defines the desired state of Advisory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"number": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"impetus": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"releaseName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"instance": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_AdvisoryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "AdvisoryStatus defines the observed state of Advisory",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"liveID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_BrewBuild(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"release": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"nvr": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"target": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"taskNumber": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"instance": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"name", "version", "release"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_Build(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Build",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_BuildJenkinsInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"buildUrl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_BuildList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Build"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Build", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_BuildSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BuildSpec defines the desired state of Build",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"brew": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BrewBuild"),
+						},
+					},
+					"jenkins": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildJenkinsInfo"),
+						},
+					},
+				},
+				Required: []string{"type", "brew"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BrewBuild", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.BuildJenkinsInfo"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_BuildStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BuildStatus defines the observed state of Build",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_Component(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Component",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentDistGit(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"namespace": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"repository": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"instance": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"namespace", "repository"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentGitSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ref": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"url", "ref"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Component"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Component", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"git": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentGitSource"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentGitSource"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ComponentSpec defines the desired state of Component",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"source": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSource"),
+						},
+					},
+					"distGit": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentDistGit"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentDistGit", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ComponentSource"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ComponentStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ComponentStatus defines the observed state of Component",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_OcpBuildDataGitSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ref": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"url", "ref"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_Payload(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Payload",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.PayloadStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_PayloadList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Payload"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Payload", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_PayloadSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PayloadSpec defines the desired state of Payload",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_PayloadStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PayloadStatus defines the observed state of Payload",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_Release(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Release",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ReleaseList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Release"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.Release", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ReleaseSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReleaseSpec defines the desired state of Release",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"releaseStreamName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseVersion"),
+						},
+					},
+				},
+				Required: []string{"releaseStreamName", "version"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseVersion"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ReleaseStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReleaseStatus defines the observed state of Release",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
 func schema_pkg_apis_release_v1alpha1_ReleaseStream(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -367,36 +1233,6 @@ func schema_pkg_apis_release_v1alpha1_ReleaseStream(ref common.ReferenceCallback
 		},
 		Dependencies: []string{
 			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
-	}
-}
-
-func schema_pkg_apis_release_v1alpha1_ReleaseStreamGitSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ref": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-			},
-		},
 	}
 }
 
@@ -454,14 +1290,14 @@ func schema_pkg_apis_release_v1alpha1_ReleaseStreamOcpBuildData(ref common.Refer
 				Properties: map[string]spec.Schema{
 					"git": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamGitSource"),
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.OcpBuildDataGitSource"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.ReleaseStreamGitSource"},
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.OcpBuildDataGitSource"},
 	}
 }
 
@@ -490,6 +1326,170 @@ func schema_pkg_apis_release_v1alpha1_ReleaseStreamStatus(ref common.ReferenceCa
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Description: "ReleaseStreamStatus defines the observed state of ReleaseStream",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_ReleaseVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"major": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"minor": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"patch": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"preRelease": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"major", "minor", "patch"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_SourceRevision(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SourceRevision",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionSpec", "github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevisionStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_SourceRevisionList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevision"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/vfreex/release-apiserver/pkg/apis/release/v1alpha1.SourceRevision", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_SourceRevisionSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SourceRevisionSpec defines the desired state of SourceRevision",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"componentName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"commitHash": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"componentName"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_release_v1alpha1_SourceRevisionStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SourceRevisionStatus defines the observed state of SourceRevision",
 				Type:        []string{"object"},
 			},
 		},

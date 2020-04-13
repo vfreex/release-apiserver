@@ -35,6 +35,266 @@ func init() {
 // RegisterConversions adds conversion functions to the given scheme.
 // Public to allow building arbitrary schemes.
 func RegisterConversions(s *runtime.Scheme) error {
+	if err := s.AddGeneratedConversionFunc((*Advisory)(nil), (*release.Advisory)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Advisory_To_release_Advisory(a.(*Advisory), b.(*release.Advisory), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.Advisory)(nil), (*Advisory)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_Advisory_To_v1alpha1_Advisory(a.(*release.Advisory), b.(*Advisory), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*AdvisoryList)(nil), (*release.AdvisoryList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_AdvisoryList_To_release_AdvisoryList(a.(*AdvisoryList), b.(*release.AdvisoryList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.AdvisoryList)(nil), (*AdvisoryList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_AdvisoryList_To_v1alpha1_AdvisoryList(a.(*release.AdvisoryList), b.(*AdvisoryList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*AdvisorySpec)(nil), (*release.AdvisorySpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec(a.(*AdvisorySpec), b.(*release.AdvisorySpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.AdvisorySpec)(nil), (*AdvisorySpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec(a.(*release.AdvisorySpec), b.(*AdvisorySpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*AdvisoryStatus)(nil), (*release.AdvisoryStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus(a.(*AdvisoryStatus), b.(*release.AdvisoryStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.AdvisoryStatus)(nil), (*AdvisoryStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus(a.(*release.AdvisoryStatus), b.(*AdvisoryStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*BrewBuild)(nil), (*release.BrewBuild)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_BrewBuild_To_release_BrewBuild(a.(*BrewBuild), b.(*release.BrewBuild), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.BrewBuild)(nil), (*BrewBuild)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_BrewBuild_To_v1alpha1_BrewBuild(a.(*release.BrewBuild), b.(*BrewBuild), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*Build)(nil), (*release.Build)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Build_To_release_Build(a.(*Build), b.(*release.Build), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.Build)(nil), (*Build)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_Build_To_v1alpha1_Build(a.(*release.Build), b.(*Build), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*BuildJenkinsInfo)(nil), (*release.BuildJenkinsInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo(a.(*BuildJenkinsInfo), b.(*release.BuildJenkinsInfo), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.BuildJenkinsInfo)(nil), (*BuildJenkinsInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo(a.(*release.BuildJenkinsInfo), b.(*BuildJenkinsInfo), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*BuildList)(nil), (*release.BuildList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_BuildList_To_release_BuildList(a.(*BuildList), b.(*release.BuildList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.BuildList)(nil), (*BuildList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_BuildList_To_v1alpha1_BuildList(a.(*release.BuildList), b.(*BuildList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*BuildSpec)(nil), (*release.BuildSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_BuildSpec_To_release_BuildSpec(a.(*BuildSpec), b.(*release.BuildSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.BuildSpec)(nil), (*BuildSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_BuildSpec_To_v1alpha1_BuildSpec(a.(*release.BuildSpec), b.(*BuildSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*BuildStatus)(nil), (*release.BuildStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_BuildStatus_To_release_BuildStatus(a.(*BuildStatus), b.(*release.BuildStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.BuildStatus)(nil), (*BuildStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_BuildStatus_To_v1alpha1_BuildStatus(a.(*release.BuildStatus), b.(*BuildStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*Component)(nil), (*release.Component)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Component_To_release_Component(a.(*Component), b.(*release.Component), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.Component)(nil), (*Component)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_Component_To_v1alpha1_Component(a.(*release.Component), b.(*Component), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentDistGit)(nil), (*release.ComponentDistGit)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit(a.(*ComponentDistGit), b.(*release.ComponentDistGit), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentDistGit)(nil), (*ComponentDistGit)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit(a.(*release.ComponentDistGit), b.(*ComponentDistGit), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentGitSource)(nil), (*release.ComponentGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource(a.(*ComponentGitSource), b.(*release.ComponentGitSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentGitSource)(nil), (*ComponentGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource(a.(*release.ComponentGitSource), b.(*ComponentGitSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentList)(nil), (*release.ComponentList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentList_To_release_ComponentList(a.(*ComponentList), b.(*release.ComponentList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentList)(nil), (*ComponentList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentList_To_v1alpha1_ComponentList(a.(*release.ComponentList), b.(*ComponentList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentSource)(nil), (*release.ComponentSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentSource_To_release_ComponentSource(a.(*ComponentSource), b.(*release.ComponentSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentSource)(nil), (*ComponentSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentSource_To_v1alpha1_ComponentSource(a.(*release.ComponentSource), b.(*ComponentSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentSpec)(nil), (*release.ComponentSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentSpec_To_release_ComponentSpec(a.(*ComponentSpec), b.(*release.ComponentSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentSpec)(nil), (*ComponentSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentSpec_To_v1alpha1_ComponentSpec(a.(*release.ComponentSpec), b.(*ComponentSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ComponentStatus)(nil), (*release.ComponentStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ComponentStatus_To_release_ComponentStatus(a.(*ComponentStatus), b.(*release.ComponentStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ComponentStatus)(nil), (*ComponentStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ComponentStatus_To_v1alpha1_ComponentStatus(a.(*release.ComponentStatus), b.(*ComponentStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*OcpBuildDataGitSource)(nil), (*release.OcpBuildDataGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource(a.(*OcpBuildDataGitSource), b.(*release.OcpBuildDataGitSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.OcpBuildDataGitSource)(nil), (*OcpBuildDataGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource(a.(*release.OcpBuildDataGitSource), b.(*OcpBuildDataGitSource), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*Payload)(nil), (*release.Payload)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Payload_To_release_Payload(a.(*Payload), b.(*release.Payload), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.Payload)(nil), (*Payload)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_Payload_To_v1alpha1_Payload(a.(*release.Payload), b.(*Payload), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*PayloadList)(nil), (*release.PayloadList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_PayloadList_To_release_PayloadList(a.(*PayloadList), b.(*release.PayloadList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.PayloadList)(nil), (*PayloadList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_PayloadList_To_v1alpha1_PayloadList(a.(*release.PayloadList), b.(*PayloadList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*PayloadSpec)(nil), (*release.PayloadSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_PayloadSpec_To_release_PayloadSpec(a.(*PayloadSpec), b.(*release.PayloadSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.PayloadSpec)(nil), (*PayloadSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_PayloadSpec_To_v1alpha1_PayloadSpec(a.(*release.PayloadSpec), b.(*PayloadSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*PayloadStatus)(nil), (*release.PayloadStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_PayloadStatus_To_release_PayloadStatus(a.(*PayloadStatus), b.(*release.PayloadStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.PayloadStatus)(nil), (*PayloadStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_PayloadStatus_To_v1alpha1_PayloadStatus(a.(*release.PayloadStatus), b.(*PayloadStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*Release)(nil), (*release.Release)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Release_To_release_Release(a.(*Release), b.(*release.Release), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.Release)(nil), (*Release)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_Release_To_v1alpha1_Release(a.(*release.Release), b.(*Release), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ReleaseList)(nil), (*release.ReleaseList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ReleaseList_To_release_ReleaseList(a.(*ReleaseList), b.(*release.ReleaseList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ReleaseList)(nil), (*ReleaseList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ReleaseList_To_v1alpha1_ReleaseList(a.(*release.ReleaseList), b.(*ReleaseList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ReleaseSpec)(nil), (*release.ReleaseSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec(a.(*ReleaseSpec), b.(*release.ReleaseSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ReleaseSpec)(nil), (*ReleaseSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec(a.(*release.ReleaseSpec), b.(*ReleaseSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*ReleaseStatus)(nil), (*release.ReleaseStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus(a.(*ReleaseStatus), b.(*release.ReleaseStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ReleaseStatus)(nil), (*ReleaseStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus(a.(*release.ReleaseStatus), b.(*ReleaseStatus), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*ReleaseStream)(nil), (*release.ReleaseStream)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1alpha1_ReleaseStream_To_release_ReleaseStream(a.(*ReleaseStream), b.(*release.ReleaseStream), scope)
 	}); err != nil {
@@ -42,16 +302,6 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*release.ReleaseStream)(nil), (*ReleaseStream)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_release_ReleaseStream_To_v1alpha1_ReleaseStream(a.(*release.ReleaseStream), b.(*ReleaseStream), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*ReleaseStreamGitSource)(nil), (*release.ReleaseStreamGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource(a.(*ReleaseStreamGitSource), b.(*release.ReleaseStreamGitSource), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*release.ReleaseStreamGitSource)(nil), (*ReleaseStreamGitSource)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource(a.(*release.ReleaseStreamGitSource), b.(*ReleaseStreamGitSource), scope)
 	}); err != nil {
 		return err
 	}
@@ -95,7 +345,701 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*ReleaseVersion)(nil), (*release.ReleaseVersion)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion(a.(*ReleaseVersion), b.(*release.ReleaseVersion), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.ReleaseVersion)(nil), (*ReleaseVersion)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion(a.(*release.ReleaseVersion), b.(*ReleaseVersion), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*SourceRevision)(nil), (*release.SourceRevision)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_SourceRevision_To_release_SourceRevision(a.(*SourceRevision), b.(*release.SourceRevision), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.SourceRevision)(nil), (*SourceRevision)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_SourceRevision_To_v1alpha1_SourceRevision(a.(*release.SourceRevision), b.(*SourceRevision), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*SourceRevisionList)(nil), (*release.SourceRevisionList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_SourceRevisionList_To_release_SourceRevisionList(a.(*SourceRevisionList), b.(*release.SourceRevisionList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.SourceRevisionList)(nil), (*SourceRevisionList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_SourceRevisionList_To_v1alpha1_SourceRevisionList(a.(*release.SourceRevisionList), b.(*SourceRevisionList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*SourceRevisionSpec)(nil), (*release.SourceRevisionSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec(a.(*SourceRevisionSpec), b.(*release.SourceRevisionSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.SourceRevisionSpec)(nil), (*SourceRevisionSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec(a.(*release.SourceRevisionSpec), b.(*SourceRevisionSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*SourceRevisionStatus)(nil), (*release.SourceRevisionStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus(a.(*SourceRevisionStatus), b.(*release.SourceRevisionStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*release.SourceRevisionStatus)(nil), (*SourceRevisionStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus(a.(*release.SourceRevisionStatus), b.(*SourceRevisionStatus), scope)
+	}); err != nil {
+		return err
+	}
 	return nil
+}
+
+func autoConvert_v1alpha1_Advisory_To_release_Advisory(in *Advisory, out *release.Advisory, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_Advisory_To_release_Advisory is an autogenerated conversion function.
+func Convert_v1alpha1_Advisory_To_release_Advisory(in *Advisory, out *release.Advisory, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Advisory_To_release_Advisory(in, out, s)
+}
+
+func autoConvert_release_Advisory_To_v1alpha1_Advisory(in *release.Advisory, out *Advisory, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_Advisory_To_v1alpha1_Advisory is an autogenerated conversion function.
+func Convert_release_Advisory_To_v1alpha1_Advisory(in *release.Advisory, out *Advisory, s conversion.Scope) error {
+	return autoConvert_release_Advisory_To_v1alpha1_Advisory(in, out, s)
+}
+
+func autoConvert_v1alpha1_AdvisoryList_To_release_AdvisoryList(in *AdvisoryList, out *release.AdvisoryList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.Advisory)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_AdvisoryList_To_release_AdvisoryList is an autogenerated conversion function.
+func Convert_v1alpha1_AdvisoryList_To_release_AdvisoryList(in *AdvisoryList, out *release.AdvisoryList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_AdvisoryList_To_release_AdvisoryList(in, out, s)
+}
+
+func autoConvert_release_AdvisoryList_To_v1alpha1_AdvisoryList(in *release.AdvisoryList, out *AdvisoryList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]Advisory)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_AdvisoryList_To_v1alpha1_AdvisoryList is an autogenerated conversion function.
+func Convert_release_AdvisoryList_To_v1alpha1_AdvisoryList(in *release.AdvisoryList, out *AdvisoryList, s conversion.Scope) error {
+	return autoConvert_release_AdvisoryList_To_v1alpha1_AdvisoryList(in, out, s)
+}
+
+func autoConvert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec(in *AdvisorySpec, out *release.AdvisorySpec, s conversion.Scope) error {
+	out.Number = in.Number
+	out.Impetus = in.Impetus
+	out.ReleaseName = in.ReleaseName
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec is an autogenerated conversion function.
+func Convert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec(in *AdvisorySpec, out *release.AdvisorySpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_AdvisorySpec_To_release_AdvisorySpec(in, out, s)
+}
+
+func autoConvert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec(in *release.AdvisorySpec, out *AdvisorySpec, s conversion.Scope) error {
+	out.Number = in.Number
+	out.Impetus = in.Impetus
+	out.ReleaseName = in.ReleaseName
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec is an autogenerated conversion function.
+func Convert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec(in *release.AdvisorySpec, out *AdvisorySpec, s conversion.Scope) error {
+	return autoConvert_release_AdvisorySpec_To_v1alpha1_AdvisorySpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus(in *AdvisoryStatus, out *release.AdvisoryStatus, s conversion.Scope) error {
+	out.LiveID = in.LiveID
+	out.State = in.State
+	return nil
+}
+
+// Convert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus is an autogenerated conversion function.
+func Convert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus(in *AdvisoryStatus, out *release.AdvisoryStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_AdvisoryStatus_To_release_AdvisoryStatus(in, out, s)
+}
+
+func autoConvert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus(in *release.AdvisoryStatus, out *AdvisoryStatus, s conversion.Scope) error {
+	out.LiveID = in.LiveID
+	out.State = in.State
+	return nil
+}
+
+// Convert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus is an autogenerated conversion function.
+func Convert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus(in *release.AdvisoryStatus, out *AdvisoryStatus, s conversion.Scope) error {
+	return autoConvert_release_AdvisoryStatus_To_v1alpha1_AdvisoryStatus(in, out, s)
+}
+
+func autoConvert_v1alpha1_BrewBuild_To_release_BrewBuild(in *BrewBuild, out *release.BrewBuild, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Version = in.Version
+	out.Release = in.Release
+	out.NVR = in.NVR
+	out.Target = in.Target
+	out.TaskNumber = in.TaskNumber
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_v1alpha1_BrewBuild_To_release_BrewBuild is an autogenerated conversion function.
+func Convert_v1alpha1_BrewBuild_To_release_BrewBuild(in *BrewBuild, out *release.BrewBuild, s conversion.Scope) error {
+	return autoConvert_v1alpha1_BrewBuild_To_release_BrewBuild(in, out, s)
+}
+
+func autoConvert_release_BrewBuild_To_v1alpha1_BrewBuild(in *release.BrewBuild, out *BrewBuild, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Version = in.Version
+	out.Release = in.Release
+	out.NVR = in.NVR
+	out.Target = in.Target
+	out.TaskNumber = in.TaskNumber
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_release_BrewBuild_To_v1alpha1_BrewBuild is an autogenerated conversion function.
+func Convert_release_BrewBuild_To_v1alpha1_BrewBuild(in *release.BrewBuild, out *BrewBuild, s conversion.Scope) error {
+	return autoConvert_release_BrewBuild_To_v1alpha1_BrewBuild(in, out, s)
+}
+
+func autoConvert_v1alpha1_Build_To_release_Build(in *Build, out *release.Build, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_BuildSpec_To_release_BuildSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_BuildStatus_To_release_BuildStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_Build_To_release_Build is an autogenerated conversion function.
+func Convert_v1alpha1_Build_To_release_Build(in *Build, out *release.Build, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Build_To_release_Build(in, out, s)
+}
+
+func autoConvert_release_Build_To_v1alpha1_Build(in *release.Build, out *Build, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_BuildSpec_To_v1alpha1_BuildSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_BuildStatus_To_v1alpha1_BuildStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_Build_To_v1alpha1_Build is an autogenerated conversion function.
+func Convert_release_Build_To_v1alpha1_Build(in *release.Build, out *Build, s conversion.Scope) error {
+	return autoConvert_release_Build_To_v1alpha1_Build(in, out, s)
+}
+
+func autoConvert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo(in *BuildJenkinsInfo, out *release.BuildJenkinsInfo, s conversion.Scope) error {
+	out.BuildUrl = in.BuildUrl
+	return nil
+}
+
+// Convert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo is an autogenerated conversion function.
+func Convert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo(in *BuildJenkinsInfo, out *release.BuildJenkinsInfo, s conversion.Scope) error {
+	return autoConvert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo(in, out, s)
+}
+
+func autoConvert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo(in *release.BuildJenkinsInfo, out *BuildJenkinsInfo, s conversion.Scope) error {
+	out.BuildUrl = in.BuildUrl
+	return nil
+}
+
+// Convert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo is an autogenerated conversion function.
+func Convert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo(in *release.BuildJenkinsInfo, out *BuildJenkinsInfo, s conversion.Scope) error {
+	return autoConvert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo(in, out, s)
+}
+
+func autoConvert_v1alpha1_BuildList_To_release_BuildList(in *BuildList, out *release.BuildList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.Build)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_BuildList_To_release_BuildList is an autogenerated conversion function.
+func Convert_v1alpha1_BuildList_To_release_BuildList(in *BuildList, out *release.BuildList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_BuildList_To_release_BuildList(in, out, s)
+}
+
+func autoConvert_release_BuildList_To_v1alpha1_BuildList(in *release.BuildList, out *BuildList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]Build)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_BuildList_To_v1alpha1_BuildList is an autogenerated conversion function.
+func Convert_release_BuildList_To_v1alpha1_BuildList(in *release.BuildList, out *BuildList, s conversion.Scope) error {
+	return autoConvert_release_BuildList_To_v1alpha1_BuildList(in, out, s)
+}
+
+func autoConvert_v1alpha1_BuildSpec_To_release_BuildSpec(in *BuildSpec, out *release.BuildSpec, s conversion.Scope) error {
+	out.Type = in.Type
+	if err := Convert_v1alpha1_BrewBuild_To_release_BrewBuild(&in.Brew, &out.Brew, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_BuildJenkinsInfo_To_release_BuildJenkinsInfo(&in.Jenkins, &out.Jenkins, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_BuildSpec_To_release_BuildSpec is an autogenerated conversion function.
+func Convert_v1alpha1_BuildSpec_To_release_BuildSpec(in *BuildSpec, out *release.BuildSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_BuildSpec_To_release_BuildSpec(in, out, s)
+}
+
+func autoConvert_release_BuildSpec_To_v1alpha1_BuildSpec(in *release.BuildSpec, out *BuildSpec, s conversion.Scope) error {
+	out.Type = in.Type
+	if err := Convert_release_BrewBuild_To_v1alpha1_BrewBuild(&in.Brew, &out.Brew, s); err != nil {
+		return err
+	}
+	if err := Convert_release_BuildJenkinsInfo_To_v1alpha1_BuildJenkinsInfo(&in.Jenkins, &out.Jenkins, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_BuildSpec_To_v1alpha1_BuildSpec is an autogenerated conversion function.
+func Convert_release_BuildSpec_To_v1alpha1_BuildSpec(in *release.BuildSpec, out *BuildSpec, s conversion.Scope) error {
+	return autoConvert_release_BuildSpec_To_v1alpha1_BuildSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_BuildStatus_To_release_BuildStatus(in *BuildStatus, out *release.BuildStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_BuildStatus_To_release_BuildStatus is an autogenerated conversion function.
+func Convert_v1alpha1_BuildStatus_To_release_BuildStatus(in *BuildStatus, out *release.BuildStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_BuildStatus_To_release_BuildStatus(in, out, s)
+}
+
+func autoConvert_release_BuildStatus_To_v1alpha1_BuildStatus(in *release.BuildStatus, out *BuildStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_BuildStatus_To_v1alpha1_BuildStatus is an autogenerated conversion function.
+func Convert_release_BuildStatus_To_v1alpha1_BuildStatus(in *release.BuildStatus, out *BuildStatus, s conversion.Scope) error {
+	return autoConvert_release_BuildStatus_To_v1alpha1_BuildStatus(in, out, s)
+}
+
+func autoConvert_v1alpha1_Component_To_release_Component(in *Component, out *release.Component, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_ComponentSpec_To_release_ComponentSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_ComponentStatus_To_release_ComponentStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_Component_To_release_Component is an autogenerated conversion function.
+func Convert_v1alpha1_Component_To_release_Component(in *Component, out *release.Component, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Component_To_release_Component(in, out, s)
+}
+
+func autoConvert_release_Component_To_v1alpha1_Component(in *release.Component, out *Component, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_ComponentSpec_To_v1alpha1_ComponentSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_ComponentStatus_To_v1alpha1_ComponentStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_Component_To_v1alpha1_Component is an autogenerated conversion function.
+func Convert_release_Component_To_v1alpha1_Component(in *release.Component, out *Component, s conversion.Scope) error {
+	return autoConvert_release_Component_To_v1alpha1_Component(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit(in *ComponentDistGit, out *release.ComponentDistGit, s conversion.Scope) error {
+	out.Namespace = in.Namespace
+	out.Repository = in.Repository
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit(in *ComponentDistGit, out *release.ComponentDistGit, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit(in, out, s)
+}
+
+func autoConvert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit(in *release.ComponentDistGit, out *ComponentDistGit, s conversion.Scope) error {
+	out.Namespace = in.Namespace
+	out.Repository = in.Repository
+	out.Instance = in.Instance
+	return nil
+}
+
+// Convert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit is an autogenerated conversion function.
+func Convert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit(in *release.ComponentDistGit, out *ComponentDistGit, s conversion.Scope) error {
+	return autoConvert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource(in *ComponentGitSource, out *release.ComponentGitSource, s conversion.Scope) error {
+	out.Url = in.Url
+	out.Ref = in.Ref
+	out.Path = in.Path
+	return nil
+}
+
+// Convert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource(in *ComponentGitSource, out *release.ComponentGitSource, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource(in, out, s)
+}
+
+func autoConvert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource(in *release.ComponentGitSource, out *ComponentGitSource, s conversion.Scope) error {
+	out.Url = in.Url
+	out.Ref = in.Ref
+	out.Path = in.Path
+	return nil
+}
+
+// Convert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource is an autogenerated conversion function.
+func Convert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource(in *release.ComponentGitSource, out *ComponentGitSource, s conversion.Scope) error {
+	return autoConvert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentList_To_release_ComponentList(in *ComponentList, out *release.ComponentList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.Component)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_ComponentList_To_release_ComponentList is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentList_To_release_ComponentList(in *ComponentList, out *release.ComponentList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentList_To_release_ComponentList(in, out, s)
+}
+
+func autoConvert_release_ComponentList_To_v1alpha1_ComponentList(in *release.ComponentList, out *ComponentList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]Component)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_ComponentList_To_v1alpha1_ComponentList is an autogenerated conversion function.
+func Convert_release_ComponentList_To_v1alpha1_ComponentList(in *release.ComponentList, out *ComponentList, s conversion.Scope) error {
+	return autoConvert_release_ComponentList_To_v1alpha1_ComponentList(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentSource_To_release_ComponentSource(in *ComponentSource, out *release.ComponentSource, s conversion.Scope) error {
+	if err := Convert_v1alpha1_ComponentGitSource_To_release_ComponentGitSource(&in.Git, &out.Git, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_ComponentSource_To_release_ComponentSource is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentSource_To_release_ComponentSource(in *ComponentSource, out *release.ComponentSource, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentSource_To_release_ComponentSource(in, out, s)
+}
+
+func autoConvert_release_ComponentSource_To_v1alpha1_ComponentSource(in *release.ComponentSource, out *ComponentSource, s conversion.Scope) error {
+	if err := Convert_release_ComponentGitSource_To_v1alpha1_ComponentGitSource(&in.Git, &out.Git, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_ComponentSource_To_v1alpha1_ComponentSource is an autogenerated conversion function.
+func Convert_release_ComponentSource_To_v1alpha1_ComponentSource(in *release.ComponentSource, out *ComponentSource, s conversion.Scope) error {
+	return autoConvert_release_ComponentSource_To_v1alpha1_ComponentSource(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentSpec_To_release_ComponentSpec(in *ComponentSpec, out *release.ComponentSpec, s conversion.Scope) error {
+	if err := Convert_v1alpha1_ComponentSource_To_release_ComponentSource(&in.Source, &out.Source, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_ComponentDistGit_To_release_ComponentDistGit(&in.DistGit, &out.DistGit, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_ComponentSpec_To_release_ComponentSpec is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentSpec_To_release_ComponentSpec(in *ComponentSpec, out *release.ComponentSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentSpec_To_release_ComponentSpec(in, out, s)
+}
+
+func autoConvert_release_ComponentSpec_To_v1alpha1_ComponentSpec(in *release.ComponentSpec, out *ComponentSpec, s conversion.Scope) error {
+	if err := Convert_release_ComponentSource_To_v1alpha1_ComponentSource(&in.Source, &out.Source, s); err != nil {
+		return err
+	}
+	if err := Convert_release_ComponentDistGit_To_v1alpha1_ComponentDistGit(&in.DistGit, &out.DistGit, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_ComponentSpec_To_v1alpha1_ComponentSpec is an autogenerated conversion function.
+func Convert_release_ComponentSpec_To_v1alpha1_ComponentSpec(in *release.ComponentSpec, out *ComponentSpec, s conversion.Scope) error {
+	return autoConvert_release_ComponentSpec_To_v1alpha1_ComponentSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_ComponentStatus_To_release_ComponentStatus(in *ComponentStatus, out *release.ComponentStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_ComponentStatus_To_release_ComponentStatus is an autogenerated conversion function.
+func Convert_v1alpha1_ComponentStatus_To_release_ComponentStatus(in *ComponentStatus, out *release.ComponentStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ComponentStatus_To_release_ComponentStatus(in, out, s)
+}
+
+func autoConvert_release_ComponentStatus_To_v1alpha1_ComponentStatus(in *release.ComponentStatus, out *ComponentStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_ComponentStatus_To_v1alpha1_ComponentStatus is an autogenerated conversion function.
+func Convert_release_ComponentStatus_To_v1alpha1_ComponentStatus(in *release.ComponentStatus, out *ComponentStatus, s conversion.Scope) error {
+	return autoConvert_release_ComponentStatus_To_v1alpha1_ComponentStatus(in, out, s)
+}
+
+func autoConvert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource(in *OcpBuildDataGitSource, out *release.OcpBuildDataGitSource, s conversion.Scope) error {
+	out.Url = in.Url
+	out.Ref = in.Ref
+	out.Path = in.Path
+	return nil
+}
+
+// Convert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource is an autogenerated conversion function.
+func Convert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource(in *OcpBuildDataGitSource, out *release.OcpBuildDataGitSource, s conversion.Scope) error {
+	return autoConvert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource(in, out, s)
+}
+
+func autoConvert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource(in *release.OcpBuildDataGitSource, out *OcpBuildDataGitSource, s conversion.Scope) error {
+	out.Url = in.Url
+	out.Ref = in.Ref
+	out.Path = in.Path
+	return nil
+}
+
+// Convert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource is an autogenerated conversion function.
+func Convert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource(in *release.OcpBuildDataGitSource, out *OcpBuildDataGitSource, s conversion.Scope) error {
+	return autoConvert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource(in, out, s)
+}
+
+func autoConvert_v1alpha1_Payload_To_release_Payload(in *Payload, out *release.Payload, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_PayloadSpec_To_release_PayloadSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_PayloadStatus_To_release_PayloadStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_Payload_To_release_Payload is an autogenerated conversion function.
+func Convert_v1alpha1_Payload_To_release_Payload(in *Payload, out *release.Payload, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Payload_To_release_Payload(in, out, s)
+}
+
+func autoConvert_release_Payload_To_v1alpha1_Payload(in *release.Payload, out *Payload, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_PayloadSpec_To_v1alpha1_PayloadSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_PayloadStatus_To_v1alpha1_PayloadStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_Payload_To_v1alpha1_Payload is an autogenerated conversion function.
+func Convert_release_Payload_To_v1alpha1_Payload(in *release.Payload, out *Payload, s conversion.Scope) error {
+	return autoConvert_release_Payload_To_v1alpha1_Payload(in, out, s)
+}
+
+func autoConvert_v1alpha1_PayloadList_To_release_PayloadList(in *PayloadList, out *release.PayloadList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.Payload)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_PayloadList_To_release_PayloadList is an autogenerated conversion function.
+func Convert_v1alpha1_PayloadList_To_release_PayloadList(in *PayloadList, out *release.PayloadList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_PayloadList_To_release_PayloadList(in, out, s)
+}
+
+func autoConvert_release_PayloadList_To_v1alpha1_PayloadList(in *release.PayloadList, out *PayloadList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]Payload)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_PayloadList_To_v1alpha1_PayloadList is an autogenerated conversion function.
+func Convert_release_PayloadList_To_v1alpha1_PayloadList(in *release.PayloadList, out *PayloadList, s conversion.Scope) error {
+	return autoConvert_release_PayloadList_To_v1alpha1_PayloadList(in, out, s)
+}
+
+func autoConvert_v1alpha1_PayloadSpec_To_release_PayloadSpec(in *PayloadSpec, out *release.PayloadSpec, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_PayloadSpec_To_release_PayloadSpec is an autogenerated conversion function.
+func Convert_v1alpha1_PayloadSpec_To_release_PayloadSpec(in *PayloadSpec, out *release.PayloadSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_PayloadSpec_To_release_PayloadSpec(in, out, s)
+}
+
+func autoConvert_release_PayloadSpec_To_v1alpha1_PayloadSpec(in *release.PayloadSpec, out *PayloadSpec, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_PayloadSpec_To_v1alpha1_PayloadSpec is an autogenerated conversion function.
+func Convert_release_PayloadSpec_To_v1alpha1_PayloadSpec(in *release.PayloadSpec, out *PayloadSpec, s conversion.Scope) error {
+	return autoConvert_release_PayloadSpec_To_v1alpha1_PayloadSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_PayloadStatus_To_release_PayloadStatus(in *PayloadStatus, out *release.PayloadStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_PayloadStatus_To_release_PayloadStatus is an autogenerated conversion function.
+func Convert_v1alpha1_PayloadStatus_To_release_PayloadStatus(in *PayloadStatus, out *release.PayloadStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_PayloadStatus_To_release_PayloadStatus(in, out, s)
+}
+
+func autoConvert_release_PayloadStatus_To_v1alpha1_PayloadStatus(in *release.PayloadStatus, out *PayloadStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_PayloadStatus_To_v1alpha1_PayloadStatus is an autogenerated conversion function.
+func Convert_release_PayloadStatus_To_v1alpha1_PayloadStatus(in *release.PayloadStatus, out *PayloadStatus, s conversion.Scope) error {
+	return autoConvert_release_PayloadStatus_To_v1alpha1_PayloadStatus(in, out, s)
+}
+
+func autoConvert_v1alpha1_Release_To_release_Release(in *Release, out *release.Release, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_Release_To_release_Release is an autogenerated conversion function.
+func Convert_v1alpha1_Release_To_release_Release(in *Release, out *release.Release, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Release_To_release_Release(in, out, s)
+}
+
+func autoConvert_release_Release_To_v1alpha1_Release(in *release.Release, out *Release, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_Release_To_v1alpha1_Release is an autogenerated conversion function.
+func Convert_release_Release_To_v1alpha1_Release(in *release.Release, out *Release, s conversion.Scope) error {
+	return autoConvert_release_Release_To_v1alpha1_Release(in, out, s)
+}
+
+func autoConvert_v1alpha1_ReleaseList_To_release_ReleaseList(in *ReleaseList, out *release.ReleaseList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.Release)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_ReleaseList_To_release_ReleaseList is an autogenerated conversion function.
+func Convert_v1alpha1_ReleaseList_To_release_ReleaseList(in *ReleaseList, out *release.ReleaseList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ReleaseList_To_release_ReleaseList(in, out, s)
+}
+
+func autoConvert_release_ReleaseList_To_v1alpha1_ReleaseList(in *release.ReleaseList, out *ReleaseList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]Release)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_ReleaseList_To_v1alpha1_ReleaseList is an autogenerated conversion function.
+func Convert_release_ReleaseList_To_v1alpha1_ReleaseList(in *release.ReleaseList, out *ReleaseList, s conversion.Scope) error {
+	return autoConvert_release_ReleaseList_To_v1alpha1_ReleaseList(in, out, s)
+}
+
+func autoConvert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec(in *ReleaseSpec, out *release.ReleaseSpec, s conversion.Scope) error {
+	out.ReleaseStreamName = in.ReleaseStreamName
+	if err := Convert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion(&in.Version, &out.Version, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec is an autogenerated conversion function.
+func Convert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec(in *ReleaseSpec, out *release.ReleaseSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ReleaseSpec_To_release_ReleaseSpec(in, out, s)
+}
+
+func autoConvert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec(in *release.ReleaseSpec, out *ReleaseSpec, s conversion.Scope) error {
+	out.ReleaseStreamName = in.ReleaseStreamName
+	if err := Convert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion(&in.Version, &out.Version, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec is an autogenerated conversion function.
+func Convert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec(in *release.ReleaseSpec, out *ReleaseSpec, s conversion.Scope) error {
+	return autoConvert_release_ReleaseSpec_To_v1alpha1_ReleaseSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus(in *ReleaseStatus, out *release.ReleaseStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus is an autogenerated conversion function.
+func Convert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus(in *ReleaseStatus, out *release.ReleaseStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ReleaseStatus_To_release_ReleaseStatus(in, out, s)
+}
+
+func autoConvert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus(in *release.ReleaseStatus, out *ReleaseStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus is an autogenerated conversion function.
+func Convert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus(in *release.ReleaseStatus, out *ReleaseStatus, s conversion.Scope) error {
+	return autoConvert_release_ReleaseStatus_To_v1alpha1_ReleaseStatus(in, out, s)
 }
 
 func autoConvert_v1alpha1_ReleaseStream_To_release_ReleaseStream(in *ReleaseStream, out *release.ReleaseStream, s conversion.Scope) error {
@@ -130,30 +1074,6 @@ func Convert_release_ReleaseStream_To_v1alpha1_ReleaseStream(in *release.Release
 	return autoConvert_release_ReleaseStream_To_v1alpha1_ReleaseStream(in, out, s)
 }
 
-func autoConvert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource(in *ReleaseStreamGitSource, out *release.ReleaseStreamGitSource, s conversion.Scope) error {
-	out.Url = in.Url
-	out.Ref = in.Ref
-	out.Path = in.Path
-	return nil
-}
-
-// Convert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource is an autogenerated conversion function.
-func Convert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource(in *ReleaseStreamGitSource, out *release.ReleaseStreamGitSource, s conversion.Scope) error {
-	return autoConvert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource(in, out, s)
-}
-
-func autoConvert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource(in *release.ReleaseStreamGitSource, out *ReleaseStreamGitSource, s conversion.Scope) error {
-	out.Url = in.Url
-	out.Ref = in.Ref
-	out.Path = in.Path
-	return nil
-}
-
-// Convert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource is an autogenerated conversion function.
-func Convert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource(in *release.ReleaseStreamGitSource, out *ReleaseStreamGitSource, s conversion.Scope) error {
-	return autoConvert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource(in, out, s)
-}
-
 func autoConvert_v1alpha1_ReleaseStreamList_To_release_ReleaseStreamList(in *ReleaseStreamList, out *release.ReleaseStreamList, s conversion.Scope) error {
 	out.ListMeta = in.ListMeta
 	out.Items = *(*[]release.ReleaseStream)(unsafe.Pointer(&in.Items))
@@ -177,7 +1097,7 @@ func Convert_release_ReleaseStreamList_To_v1alpha1_ReleaseStreamList(in *release
 }
 
 func autoConvert_v1alpha1_ReleaseStreamOcpBuildData_To_release_ReleaseStreamOcpBuildData(in *ReleaseStreamOcpBuildData, out *release.ReleaseStreamOcpBuildData, s conversion.Scope) error {
-	if err := Convert_v1alpha1_ReleaseStreamGitSource_To_release_ReleaseStreamGitSource(&in.Git, &out.Git, s); err != nil {
+	if err := Convert_v1alpha1_OcpBuildDataGitSource_To_release_OcpBuildDataGitSource(&in.Git, &out.Git, s); err != nil {
 		return err
 	}
 	return nil
@@ -189,7 +1109,7 @@ func Convert_v1alpha1_ReleaseStreamOcpBuildData_To_release_ReleaseStreamOcpBuild
 }
 
 func autoConvert_release_ReleaseStreamOcpBuildData_To_v1alpha1_ReleaseStreamOcpBuildData(in *release.ReleaseStreamOcpBuildData, out *ReleaseStreamOcpBuildData, s conversion.Scope) error {
-	if err := Convert_release_ReleaseStreamGitSource_To_v1alpha1_ReleaseStreamGitSource(&in.Git, &out.Git, s); err != nil {
+	if err := Convert_release_OcpBuildDataGitSource_To_v1alpha1_OcpBuildDataGitSource(&in.Git, &out.Git, s); err != nil {
 		return err
 	}
 	return nil
@@ -240,4 +1160,124 @@ func autoConvert_release_ReleaseStreamStatus_To_v1alpha1_ReleaseStreamStatus(in 
 // Convert_release_ReleaseStreamStatus_To_v1alpha1_ReleaseStreamStatus is an autogenerated conversion function.
 func Convert_release_ReleaseStreamStatus_To_v1alpha1_ReleaseStreamStatus(in *release.ReleaseStreamStatus, out *ReleaseStreamStatus, s conversion.Scope) error {
 	return autoConvert_release_ReleaseStreamStatus_To_v1alpha1_ReleaseStreamStatus(in, out, s)
+}
+
+func autoConvert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion(in *ReleaseVersion, out *release.ReleaseVersion, s conversion.Scope) error {
+	out.Major = in.Major
+	out.Minor = in.Minor
+	out.Patch = in.Patch
+	out.PreRelease = in.PreRelease
+	return nil
+}
+
+// Convert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion is an autogenerated conversion function.
+func Convert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion(in *ReleaseVersion, out *release.ReleaseVersion, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ReleaseVersion_To_release_ReleaseVersion(in, out, s)
+}
+
+func autoConvert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion(in *release.ReleaseVersion, out *ReleaseVersion, s conversion.Scope) error {
+	out.Major = in.Major
+	out.Minor = in.Minor
+	out.Patch = in.Patch
+	out.PreRelease = in.PreRelease
+	return nil
+}
+
+// Convert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion is an autogenerated conversion function.
+func Convert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion(in *release.ReleaseVersion, out *ReleaseVersion, s conversion.Scope) error {
+	return autoConvert_release_ReleaseVersion_To_v1alpha1_ReleaseVersion(in, out, s)
+}
+
+func autoConvert_v1alpha1_SourceRevision_To_release_SourceRevision(in *SourceRevision, out *release.SourceRevision, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_SourceRevision_To_release_SourceRevision is an autogenerated conversion function.
+func Convert_v1alpha1_SourceRevision_To_release_SourceRevision(in *SourceRevision, out *release.SourceRevision, s conversion.Scope) error {
+	return autoConvert_v1alpha1_SourceRevision_To_release_SourceRevision(in, out, s)
+}
+
+func autoConvert_release_SourceRevision_To_v1alpha1_SourceRevision(in *release.SourceRevision, out *SourceRevision, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_release_SourceRevision_To_v1alpha1_SourceRevision is an autogenerated conversion function.
+func Convert_release_SourceRevision_To_v1alpha1_SourceRevision(in *release.SourceRevision, out *SourceRevision, s conversion.Scope) error {
+	return autoConvert_release_SourceRevision_To_v1alpha1_SourceRevision(in, out, s)
+}
+
+func autoConvert_v1alpha1_SourceRevisionList_To_release_SourceRevisionList(in *SourceRevisionList, out *release.SourceRevisionList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]release.SourceRevision)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_SourceRevisionList_To_release_SourceRevisionList is an autogenerated conversion function.
+func Convert_v1alpha1_SourceRevisionList_To_release_SourceRevisionList(in *SourceRevisionList, out *release.SourceRevisionList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_SourceRevisionList_To_release_SourceRevisionList(in, out, s)
+}
+
+func autoConvert_release_SourceRevisionList_To_v1alpha1_SourceRevisionList(in *release.SourceRevisionList, out *SourceRevisionList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]SourceRevision)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_release_SourceRevisionList_To_v1alpha1_SourceRevisionList is an autogenerated conversion function.
+func Convert_release_SourceRevisionList_To_v1alpha1_SourceRevisionList(in *release.SourceRevisionList, out *SourceRevisionList, s conversion.Scope) error {
+	return autoConvert_release_SourceRevisionList_To_v1alpha1_SourceRevisionList(in, out, s)
+}
+
+func autoConvert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec(in *SourceRevisionSpec, out *release.SourceRevisionSpec, s conversion.Scope) error {
+	out.ComponentName = in.ComponentName
+	out.CommitHash = in.CommitHash
+	return nil
+}
+
+// Convert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec is an autogenerated conversion function.
+func Convert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec(in *SourceRevisionSpec, out *release.SourceRevisionSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_SourceRevisionSpec_To_release_SourceRevisionSpec(in, out, s)
+}
+
+func autoConvert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec(in *release.SourceRevisionSpec, out *SourceRevisionSpec, s conversion.Scope) error {
+	out.ComponentName = in.ComponentName
+	out.CommitHash = in.CommitHash
+	return nil
+}
+
+// Convert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec is an autogenerated conversion function.
+func Convert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec(in *release.SourceRevisionSpec, out *SourceRevisionSpec, s conversion.Scope) error {
+	return autoConvert_release_SourceRevisionSpec_To_v1alpha1_SourceRevisionSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus(in *SourceRevisionStatus, out *release.SourceRevisionStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus is an autogenerated conversion function.
+func Convert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus(in *SourceRevisionStatus, out *release.SourceRevisionStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_SourceRevisionStatus_To_release_SourceRevisionStatus(in, out, s)
+}
+
+func autoConvert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus(in *release.SourceRevisionStatus, out *SourceRevisionStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus is an autogenerated conversion function.
+func Convert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus(in *release.SourceRevisionStatus, out *SourceRevisionStatus, s conversion.Scope) error {
+	return autoConvert_release_SourceRevisionStatus_To_v1alpha1_SourceRevisionStatus(in, out, s)
 }

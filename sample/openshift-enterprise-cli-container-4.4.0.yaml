@@ -1,0 +1,16 @@
+apiVersion: release.art.openshift.io/v1alpha1
+kind: Build
+metadata:
+  name: openshift-enterprise-cli-container-4.4.0
+  labels:
+    release-stream: openshift-4.4
+    release: openshift-4.4.0-rc.8
+    impetus: image
+spec:
+  type: containerImage
+  brew:
+    name: openshift-enterprise-cli-container
+    version: "v4.4.0"
+    release: "202004130000"
+  jenkins:
+    buildUrl: http://jenkins.example.com/foo/bar

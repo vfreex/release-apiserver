@@ -31,17 +31,125 @@ import (
 )
 
 var (
+	ReleaseAdvisoryStorage = builders.NewApiResource( // Resource status endpoint
+		InternalAdvisory,
+		func() runtime.Object { return &Advisory{} },     // Register versioned resource
+		func() runtime.Object { return &AdvisoryList{} }, // Register versioned resource list
+		&AdvisoryStrategy{builders.StorageStrategySingleton},
+	)
+	ReleaseBuildStorage = builders.NewApiResource( // Resource status endpoint
+		InternalBuild,
+		func() runtime.Object { return &Build{} },     // Register versioned resource
+		func() runtime.Object { return &BuildList{} }, // Register versioned resource list
+		&BuildStrategy{builders.StorageStrategySingleton},
+	)
+	ReleaseComponentStorage = builders.NewApiResource( // Resource status endpoint
+		InternalComponent,
+		func() runtime.Object { return &Component{} },     // Register versioned resource
+		func() runtime.Object { return &ComponentList{} }, // Register versioned resource list
+		&ComponentStrategy{builders.StorageStrategySingleton},
+	)
+	ReleasePayloadStorage = builders.NewApiResource( // Resource status endpoint
+		InternalPayload,
+		func() runtime.Object { return &Payload{} },     // Register versioned resource
+		func() runtime.Object { return &PayloadList{} }, // Register versioned resource list
+		&PayloadStrategy{builders.StorageStrategySingleton},
+	)
+	ReleaseReleaseStorage = builders.NewApiResource( // Resource status endpoint
+		InternalRelease,
+		func() runtime.Object { return &Release{} },     // Register versioned resource
+		func() runtime.Object { return &ReleaseList{} }, // Register versioned resource list
+		&ReleaseStrategy{builders.StorageStrategySingleton},
+	)
 	ReleaseReleaseStreamStorage = builders.NewApiResource( // Resource status endpoint
 		InternalReleaseStream,
 		func() runtime.Object { return &ReleaseStream{} },     // Register versioned resource
 		func() runtime.Object { return &ReleaseStreamList{} }, // Register versioned resource list
 		&ReleaseStreamStrategy{builders.StorageStrategySingleton},
 	)
-	InternalReleaseStream = builders.NewInternalResource(
+	ReleaseSourceRevisionStorage = builders.NewApiResource( // Resource status endpoint
+		InternalSourceRevision,
+		func() runtime.Object { return &SourceRevision{} },     // Register versioned resource
+		func() runtime.Object { return &SourceRevisionList{} }, // Register versioned resource list
+		&SourceRevisionStrategy{builders.StorageStrategySingleton},
+	)
+	InternalAdvisory = builders.NewInternalResourceWithShortcuts(
+		"advisories",
+		"Advisory",
+		func() runtime.Object { return &Advisory{} },
+		func() runtime.Object { return &AdvisoryList{} },
+		[]string{"ad"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalAdvisoryStatus = builders.NewInternalResourceStatus(
+		"advisories",
+		"AdvisoryStatus",
+		func() runtime.Object { return &Advisory{} },
+		func() runtime.Object { return &AdvisoryList{} },
+	)
+	InternalBuild = builders.NewInternalResourceWithShortcuts(
+		"builds",
+		"Build",
+		func() runtime.Object { return &Build{} },
+		func() runtime.Object { return &BuildList{} },
+		[]string{"b"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalBuildStatus = builders.NewInternalResourceStatus(
+		"builds",
+		"BuildStatus",
+		func() runtime.Object { return &Build{} },
+		func() runtime.Object { return &BuildList{} },
+	)
+	InternalComponent = builders.NewInternalResourceWithShortcuts(
+		"components",
+		"Component",
+		func() runtime.Object { return &Component{} },
+		func() runtime.Object { return &ComponentList{} },
+		[]string{"cp"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalComponentStatus = builders.NewInternalResourceStatus(
+		"components",
+		"ComponentStatus",
+		func() runtime.Object { return &Component{} },
+		func() runtime.Object { return &ComponentList{} },
+	)
+	InternalPayload = builders.NewInternalResourceWithShortcuts(
+		"payloads",
+		"Payload",
+		func() runtime.Object { return &Payload{} },
+		func() runtime.Object { return &PayloadList{} },
+		[]string{"pl"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalPayloadStatus = builders.NewInternalResourceStatus(
+		"payloads",
+		"PayloadStatus",
+		func() runtime.Object { return &Payload{} },
+		func() runtime.Object { return &PayloadList{} },
+	)
+	InternalRelease = builders.NewInternalResourceWithShortcuts(
+		"releases",
+		"Release",
+		func() runtime.Object { return &Release{} },
+		func() runtime.Object { return &ReleaseList{} },
+		[]string{"rl"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalReleaseStatus = builders.NewInternalResourceStatus(
+		"releases",
+		"ReleaseStatus",
+		func() runtime.Object { return &Release{} },
+		func() runtime.Object { return &ReleaseList{} },
+	)
+	InternalReleaseStream = builders.NewInternalResourceWithShortcuts(
 		"releasestreams",
 		"ReleaseStream",
 		func() runtime.Object { return &ReleaseStream{} },
 		func() runtime.Object { return &ReleaseStreamList{} },
+		[]string{"rs"},
+		[]string{"aggregation"}, // TBD
 	)
 	InternalReleaseStreamStatus = builders.NewInternalResourceStatus(
 		"releasestreams",
@@ -49,10 +157,36 @@ var (
 		func() runtime.Object { return &ReleaseStream{} },
 		func() runtime.Object { return &ReleaseStreamList{} },
 	)
+	InternalSourceRevision = builders.NewInternalResourceWithShortcuts(
+		"sourcerevisions",
+		"SourceRevision",
+		func() runtime.Object { return &SourceRevision{} },
+		func() runtime.Object { return &SourceRevisionList{} },
+		[]string{"sr"},
+		[]string{"aggregation"}, // TBD
+	)
+	InternalSourceRevisionStatus = builders.NewInternalResourceStatus(
+		"sourcerevisions",
+		"SourceRevisionStatus",
+		func() runtime.Object { return &SourceRevision{} },
+		func() runtime.Object { return &SourceRevisionList{} },
+	)
 	// Registered resources and subresources
 	ApiVersion = builders.NewApiGroup("release.art.openshift.io").WithKinds(
+		InternalAdvisory,
+		InternalAdvisoryStatus,
+		InternalBuild,
+		InternalBuildStatus,
+		InternalComponent,
+		InternalComponentStatus,
+		InternalPayload,
+		InternalPayloadStatus,
+		InternalRelease,
+		InternalReleaseStatus,
 		InternalReleaseStream,
 		InternalReleaseStreamStatus,
+		InternalSourceRevision,
+		InternalSourceRevisionStatus,
 	)
 
 	// Required by code generated by go2idl
@@ -81,6 +215,140 @@ func Resource(resource string) schema.GroupResource {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+type Advisory struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   AdvisorySpec
+	Status AdvisoryStatus
+}
+
+type AdvisorySpec struct {
+	Number      int
+	Impetus     string
+	ReleaseName string
+	Instance    string
+}
+
+type AdvisoryStatus struct {
+	LiveID string
+	State  string
+}
+
+type BrewBuild struct {
+	Name       string
+	Version    string
+	Release    string
+	NVR        string
+	Target     string
+	TaskNumber int
+	Instance   string
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Build struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   BuildSpec
+	Status BuildStatus
+}
+
+type BuildJenkinsInfo struct {
+	BuildUrl string
+}
+
+type BuildSpec struct {
+	Type    string
+	Brew    BrewBuild
+	Jenkins BuildJenkinsInfo
+}
+
+type BuildStatus struct {
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Component struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   ComponentSpec
+	Status ComponentStatus
+}
+
+type ComponentDistGit struct {
+	Namespace  string
+	Repository string
+	Instance   string
+}
+
+type ComponentGitSource struct {
+	Url  string
+	Ref  string
+	Path string
+}
+
+type ComponentSource struct {
+	Git ComponentGitSource
+}
+
+type ComponentSpec struct {
+	Source  ComponentSource
+	DistGit ComponentDistGit
+}
+
+type ComponentStatus struct {
+}
+
+type OcpBuildDataGitSource struct {
+	Url  string
+	Ref  string
+	Path string
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Payload struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   PayloadSpec
+	Status PayloadStatus
+}
+
+type PayloadSpec struct {
+}
+
+type PayloadStatus struct {
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Release struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   ReleaseSpec
+	Status ReleaseStatus
+}
+
+type ReleaseSpec struct {
+	ReleaseStreamName string
+	Version           ReleaseVersion
+}
+
+type ReleaseStatus struct {
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 type ReleaseStream struct {
 	metav1.TypeMeta
 	metav1.ObjectMeta
@@ -88,14 +356,8 @@ type ReleaseStream struct {
 	Status ReleaseStreamStatus
 }
 
-type ReleaseStreamGitSource struct {
-	Url  string
-	Ref  string
-	Path string
-}
-
 type ReleaseStreamOcpBuildData struct {
-	Git ReleaseStreamGitSource
+	Git OcpBuildDataGitSource
 }
 
 type ReleaseStreamSpec struct {
@@ -103,6 +365,632 @@ type ReleaseStreamSpec struct {
 }
 
 type ReleaseStreamStatus struct {
+}
+
+type ReleaseVersion struct {
+	Major      int
+	Minor      int
+	Patch      int
+	PreRelease string
+}
+
+// +genclient
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type SourceRevision struct {
+	metav1.TypeMeta
+	metav1.ObjectMeta
+	Spec   SourceRevisionSpec
+	Status SourceRevisionStatus
+}
+
+type SourceRevisionSpec struct {
+	ComponentName string
+	CommitHash    string
+}
+
+type SourceRevisionStatus struct {
+}
+
+//
+// Advisory Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type AdvisoryStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type AdvisoryStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type AdvisoryList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []Advisory
+}
+
+func (Advisory) NewStatus() interface{} {
+	return AdvisoryStatus{}
+}
+
+func (pc *Advisory) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *Advisory) SetStatus(s interface{}) {
+	pc.Status = s.(AdvisoryStatus)
+}
+
+func (pc *Advisory) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *Advisory) SetSpec(s interface{}) {
+	pc.Spec = s.(AdvisorySpec)
+}
+
+func (pc *Advisory) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *Advisory) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc Advisory) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store Advisory.
+// +k8s:deepcopy-gen=false
+type AdvisoryRegistry interface {
+	ListAdvisorys(ctx context.Context, options *internalversion.ListOptions) (*AdvisoryList, error)
+	GetAdvisory(ctx context.Context, id string, options *metav1.GetOptions) (*Advisory, error)
+	CreateAdvisory(ctx context.Context, id *Advisory) (*Advisory, error)
+	UpdateAdvisory(ctx context.Context, id *Advisory) (*Advisory, error)
+	DeleteAdvisory(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewAdvisoryRegistry(sp builders.StandardStorageProvider) AdvisoryRegistry {
+	return &storageAdvisory{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageAdvisory struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageAdvisory) ListAdvisorys(ctx context.Context, options *internalversion.ListOptions) (*AdvisoryList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*AdvisoryList), err
+}
+
+func (s *storageAdvisory) GetAdvisory(ctx context.Context, id string, options *metav1.GetOptions) (*Advisory, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Advisory), nil
+}
+
+func (s *storageAdvisory) CreateAdvisory(ctx context.Context, object *Advisory) (*Advisory, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Advisory), nil
+}
+
+func (s *storageAdvisory) UpdateAdvisory(ctx context.Context, object *Advisory) (*Advisory, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Advisory), nil
+}
+
+func (s *storageAdvisory) DeleteAdvisory(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+//
+// Build Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type BuildStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type BuildStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type BuildList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []Build
+}
+
+func (Build) NewStatus() interface{} {
+	return BuildStatus{}
+}
+
+func (pc *Build) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *Build) SetStatus(s interface{}) {
+	pc.Status = s.(BuildStatus)
+}
+
+func (pc *Build) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *Build) SetSpec(s interface{}) {
+	pc.Spec = s.(BuildSpec)
+}
+
+func (pc *Build) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *Build) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc Build) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store Build.
+// +k8s:deepcopy-gen=false
+type BuildRegistry interface {
+	ListBuilds(ctx context.Context, options *internalversion.ListOptions) (*BuildList, error)
+	GetBuild(ctx context.Context, id string, options *metav1.GetOptions) (*Build, error)
+	CreateBuild(ctx context.Context, id *Build) (*Build, error)
+	UpdateBuild(ctx context.Context, id *Build) (*Build, error)
+	DeleteBuild(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewBuildRegistry(sp builders.StandardStorageProvider) BuildRegistry {
+	return &storageBuild{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageBuild struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageBuild) ListBuilds(ctx context.Context, options *internalversion.ListOptions) (*BuildList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*BuildList), err
+}
+
+func (s *storageBuild) GetBuild(ctx context.Context, id string, options *metav1.GetOptions) (*Build, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Build), nil
+}
+
+func (s *storageBuild) CreateBuild(ctx context.Context, object *Build) (*Build, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Build), nil
+}
+
+func (s *storageBuild) UpdateBuild(ctx context.Context, object *Build) (*Build, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Build), nil
+}
+
+func (s *storageBuild) DeleteBuild(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+//
+// Component Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type ComponentStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type ComponentStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type ComponentList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []Component
+}
+
+func (Component) NewStatus() interface{} {
+	return ComponentStatus{}
+}
+
+func (pc *Component) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *Component) SetStatus(s interface{}) {
+	pc.Status = s.(ComponentStatus)
+}
+
+func (pc *Component) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *Component) SetSpec(s interface{}) {
+	pc.Spec = s.(ComponentSpec)
+}
+
+func (pc *Component) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *Component) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc Component) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store Component.
+// +k8s:deepcopy-gen=false
+type ComponentRegistry interface {
+	ListComponents(ctx context.Context, options *internalversion.ListOptions) (*ComponentList, error)
+	GetComponent(ctx context.Context, id string, options *metav1.GetOptions) (*Component, error)
+	CreateComponent(ctx context.Context, id *Component) (*Component, error)
+	UpdateComponent(ctx context.Context, id *Component) (*Component, error)
+	DeleteComponent(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewComponentRegistry(sp builders.StandardStorageProvider) ComponentRegistry {
+	return &storageComponent{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageComponent struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageComponent) ListComponents(ctx context.Context, options *internalversion.ListOptions) (*ComponentList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*ComponentList), err
+}
+
+func (s *storageComponent) GetComponent(ctx context.Context, id string, options *metav1.GetOptions) (*Component, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Component), nil
+}
+
+func (s *storageComponent) CreateComponent(ctx context.Context, object *Component) (*Component, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Component), nil
+}
+
+func (s *storageComponent) UpdateComponent(ctx context.Context, object *Component) (*Component, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Component), nil
+}
+
+func (s *storageComponent) DeleteComponent(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+//
+// Payload Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type PayloadStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type PayloadStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type PayloadList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []Payload
+}
+
+func (Payload) NewStatus() interface{} {
+	return PayloadStatus{}
+}
+
+func (pc *Payload) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *Payload) SetStatus(s interface{}) {
+	pc.Status = s.(PayloadStatus)
+}
+
+func (pc *Payload) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *Payload) SetSpec(s interface{}) {
+	pc.Spec = s.(PayloadSpec)
+}
+
+func (pc *Payload) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *Payload) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc Payload) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store Payload.
+// +k8s:deepcopy-gen=false
+type PayloadRegistry interface {
+	ListPayloads(ctx context.Context, options *internalversion.ListOptions) (*PayloadList, error)
+	GetPayload(ctx context.Context, id string, options *metav1.GetOptions) (*Payload, error)
+	CreatePayload(ctx context.Context, id *Payload) (*Payload, error)
+	UpdatePayload(ctx context.Context, id *Payload) (*Payload, error)
+	DeletePayload(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewPayloadRegistry(sp builders.StandardStorageProvider) PayloadRegistry {
+	return &storagePayload{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storagePayload struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storagePayload) ListPayloads(ctx context.Context, options *internalversion.ListOptions) (*PayloadList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*PayloadList), err
+}
+
+func (s *storagePayload) GetPayload(ctx context.Context, id string, options *metav1.GetOptions) (*Payload, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Payload), nil
+}
+
+func (s *storagePayload) CreatePayload(ctx context.Context, object *Payload) (*Payload, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Payload), nil
+}
+
+func (s *storagePayload) UpdatePayload(ctx context.Context, object *Payload) (*Payload, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Payload), nil
+}
+
+func (s *storagePayload) DeletePayload(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+//
+// Release Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type ReleaseStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type ReleaseStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type ReleaseList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []Release
+}
+
+func (Release) NewStatus() interface{} {
+	return ReleaseStatus{}
+}
+
+func (pc *Release) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *Release) SetStatus(s interface{}) {
+	pc.Status = s.(ReleaseStatus)
+}
+
+func (pc *Release) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *Release) SetSpec(s interface{}) {
+	pc.Spec = s.(ReleaseSpec)
+}
+
+func (pc *Release) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *Release) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc Release) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store Release.
+// +k8s:deepcopy-gen=false
+type ReleaseRegistry interface {
+	ListReleases(ctx context.Context, options *internalversion.ListOptions) (*ReleaseList, error)
+	GetRelease(ctx context.Context, id string, options *metav1.GetOptions) (*Release, error)
+	CreateRelease(ctx context.Context, id *Release) (*Release, error)
+	UpdateRelease(ctx context.Context, id *Release) (*Release, error)
+	DeleteRelease(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewReleaseRegistry(sp builders.StandardStorageProvider) ReleaseRegistry {
+	return &storageRelease{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageRelease struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageRelease) ListReleases(ctx context.Context, options *internalversion.ListOptions) (*ReleaseList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*ReleaseList), err
+}
+
+func (s *storageRelease) GetRelease(ctx context.Context, id string, options *metav1.GetOptions) (*Release, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Release), nil
+}
+
+func (s *storageRelease) CreateRelease(ctx context.Context, object *Release) (*Release, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Release), nil
+}
+
+func (s *storageRelease) UpdateRelease(ctx context.Context, object *Release) (*Release, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*Release), nil
+}
+
+func (s *storageRelease) DeleteRelease(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
 }
 
 //
@@ -220,6 +1108,126 @@ func (s *storageReleaseStream) UpdateReleaseStream(ctx context.Context, object *
 }
 
 func (s *storageReleaseStream) DeleteReleaseStream(ctx context.Context, id string) (bool, error) {
+	st := s.GetStandardStorage()
+	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
+	return sync, err
+}
+
+//
+// SourceRevision Functions and Structs
+//
+// +k8s:deepcopy-gen=false
+type SourceRevisionStrategy struct {
+	builders.DefaultStorageStrategy
+}
+
+// +k8s:deepcopy-gen=false
+type SourceRevisionStatusStrategy struct {
+	builders.DefaultStatusStorageStrategy
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type SourceRevisionList struct {
+	metav1.TypeMeta
+	metav1.ListMeta
+	Items []SourceRevision
+}
+
+func (SourceRevision) NewStatus() interface{} {
+	return SourceRevisionStatus{}
+}
+
+func (pc *SourceRevision) GetStatus() interface{} {
+	return pc.Status
+}
+
+func (pc *SourceRevision) SetStatus(s interface{}) {
+	pc.Status = s.(SourceRevisionStatus)
+}
+
+func (pc *SourceRevision) GetSpec() interface{} {
+	return pc.Spec
+}
+
+func (pc *SourceRevision) SetSpec(s interface{}) {
+	pc.Spec = s.(SourceRevisionSpec)
+}
+
+func (pc *SourceRevision) GetObjectMeta() *metav1.ObjectMeta {
+	return &pc.ObjectMeta
+}
+
+func (pc *SourceRevision) SetGeneration(generation int64) {
+	pc.ObjectMeta.Generation = generation
+}
+
+func (pc SourceRevision) GetGeneration() int64 {
+	return pc.ObjectMeta.Generation
+}
+
+// Registry is an interface for things that know how to store SourceRevision.
+// +k8s:deepcopy-gen=false
+type SourceRevisionRegistry interface {
+	ListSourceRevisions(ctx context.Context, options *internalversion.ListOptions) (*SourceRevisionList, error)
+	GetSourceRevision(ctx context.Context, id string, options *metav1.GetOptions) (*SourceRevision, error)
+	CreateSourceRevision(ctx context.Context, id *SourceRevision) (*SourceRevision, error)
+	UpdateSourceRevision(ctx context.Context, id *SourceRevision) (*SourceRevision, error)
+	DeleteSourceRevision(ctx context.Context, id string) (bool, error)
+}
+
+// NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
+func NewSourceRevisionRegistry(sp builders.StandardStorageProvider) SourceRevisionRegistry {
+	return &storageSourceRevision{sp}
+}
+
+// Implement Registry
+// storage puts strong typing around storage calls
+// +k8s:deepcopy-gen=false
+type storageSourceRevision struct {
+	builders.StandardStorageProvider
+}
+
+func (s *storageSourceRevision) ListSourceRevisions(ctx context.Context, options *internalversion.ListOptions) (*SourceRevisionList, error) {
+	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
+		return nil, fmt.Errorf("field selector not supported yet")
+	}
+	st := s.GetStandardStorage()
+	obj, err := st.List(ctx, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*SourceRevisionList), err
+}
+
+func (s *storageSourceRevision) GetSourceRevision(ctx context.Context, id string, options *metav1.GetOptions) (*SourceRevision, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Get(ctx, id, options)
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*SourceRevision), nil
+}
+
+func (s *storageSourceRevision) CreateSourceRevision(ctx context.Context, object *SourceRevision) (*SourceRevision, error) {
+	st := s.GetStandardStorage()
+	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*SourceRevision), nil
+}
+
+func (s *storageSourceRevision) UpdateSourceRevision(ctx context.Context, object *SourceRevision) (*SourceRevision, error) {
+	st := s.GetStandardStorage()
+	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return obj.(*SourceRevision), nil
+}
+
+func (s *storageSourceRevision) DeleteSourceRevision(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err

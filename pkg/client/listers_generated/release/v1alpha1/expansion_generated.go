@@ -18,6 +18,46 @@ limitations under the License.
 
 package v1alpha1
 
+// AdvisoryListerExpansion allows custom methods to be added to
+// AdvisoryLister.
+type AdvisoryListerExpansion interface{}
+
+// AdvisoryNamespaceListerExpansion allows custom methods to be added to
+// AdvisoryNamespaceLister.
+type AdvisoryNamespaceListerExpansion interface{}
+
+// BuildListerExpansion allows custom methods to be added to
+// BuildLister.
+type BuildListerExpansion interface{}
+
+// BuildNamespaceListerExpansion allows custom methods to be added to
+// BuildNamespaceLister.
+type BuildNamespaceListerExpansion interface{}
+
+// ComponentListerExpansion allows custom methods to be added to
+// ComponentLister.
+type ComponentListerExpansion interface{}
+
+// ComponentNamespaceListerExpansion allows custom methods to be added to
+// ComponentNamespaceLister.
+type ComponentNamespaceListerExpansion interface{}
+
+// PayloadListerExpansion allows custom methods to be added to
+// PayloadLister.
+type PayloadListerExpansion interface{}
+
+// PayloadNamespaceListerExpansion allows custom methods to be added to
+// PayloadNamespaceLister.
+type PayloadNamespaceListerExpansion interface{}
+
+// ReleaseListerExpansion allows custom methods to be added to
+// ReleaseLister.
+type ReleaseListerExpansion interface{}
+
+// ReleaseNamespaceListerExpansion allows custom methods to be added to
+// ReleaseNamespaceLister.
+type ReleaseNamespaceListerExpansion interface{}
+
 // ReleaseStreamListerExpansion allows custom methods to be added to
 // ReleaseStreamLister.
 type ReleaseStreamListerExpansion interface{}
@@ -25,3 +65,11 @@ type ReleaseStreamListerExpansion interface{}
 // ReleaseStreamNamespaceListerExpansion allows custom methods to be added to
 // ReleaseStreamNamespaceLister.
 type ReleaseStreamNamespaceListerExpansion interface{}
+
+// SourceRevisionListerExpansion allows custom methods to be added to
+// SourceRevisionLister.
+type SourceRevisionListerExpansion interface{}
+
+// SourceRevisionNamespaceListerExpansion allows custom methods to be added to
+// SourceRevisionNamespaceLister.
+type SourceRevisionNamespaceListerExpansion interface{}

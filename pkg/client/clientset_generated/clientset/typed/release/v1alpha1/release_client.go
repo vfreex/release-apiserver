@@ -26,7 +26,13 @@ import (
 
 type ReleaseV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AdvisoriesGetter
+	BuildsGetter
+	ComponentsGetter
+	PayloadsGetter
+	ReleasesGetter
 	ReleaseStreamsGetter
+	SourceRevisionsGetter
 }
 
 // ReleaseV1alpha1Client is used to interact with features provided by the release.art.openshift.io group.
@@ -34,8 +40,32 @@ type ReleaseV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *ReleaseV1alpha1Client) Advisories(namespace string) AdvisoryInterface {
+	return newAdvisories(c, namespace)
+}
+
+func (c *ReleaseV1alpha1Client) Builds(namespace string) BuildInterface {
+	return newBuilds(c, namespace)
+}
+
+func (c *ReleaseV1alpha1Client) Components(namespace string) ComponentInterface {
+	return newComponents(c, namespace)
+}
+
+func (c *ReleaseV1alpha1Client) Payloads(namespace string) PayloadInterface {
+	return newPayloads(c, namespace)
+}
+
+func (c *ReleaseV1alpha1Client) Releases(namespace string) ReleaseInterface {
+	return newReleases(c, namespace)
+}
+
 func (c *ReleaseV1alpha1Client) ReleaseStreams(namespace string) ReleaseStreamInterface {
 	return newReleaseStreams(c, namespace)
+}
+
+func (c *ReleaseV1alpha1Client) SourceRevisions(namespace string) SourceRevisionInterface {
+	return newSourceRevisions(c, namespace)
 }
 
 // NewForConfig creates a new ReleaseV1alpha1Client for the given config.

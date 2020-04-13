@@ -1,0 +1,5 @@
+apiVersion: release.art.openshift.io/v1alpha1
+kind: Payload
+metadata:
+  name: openshift-release-payload-4.4.0
+spec:

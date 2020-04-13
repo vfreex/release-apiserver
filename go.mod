@@ -5,6 +5,7 @@ go 1.13
 require (
 	github.com/go-openapi/loads v0.19.4
 	github.com/go-openapi/spec v0.19.3
+	github.com/kolo/xmlrpc v0.0.0-20200310150728-e0350524596b
 	github.com/onsi/ginkgo v1.11.0
 	github.com/onsi/gomega v1.8.1
 	golang.org/x/net v0.0.0-20191004110552-13f9640d40b9

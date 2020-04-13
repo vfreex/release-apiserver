@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -25,32 +23,23 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ReleaseStream
+// SourceRevision
 // +k8s:openapi-gen=true
-// +resource:path=releasestreams,shortname=rs,strategy=ReleaseStreamStrategy
-type ReleaseStream struct {
+// +resource:path=sourcerevisions,shortname=sr,strategy=SourceRevisionStrategy
+type SourceRevision struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ReleaseStreamSpec   `json:"spec,omitempty"`
-	Status ReleaseStreamStatus `json:"status,omitempty"`
+	Spec   SourceRevisionSpec   `json:"spec,omitempty"`
+	Status SourceRevisionStatus `json:"status,omitempty"`
 }
 
-// ReleaseStreamSpec defines the desired state of ReleaseStream
-type ReleaseStreamSpec struct {
-	OcpBuildData ReleaseStreamOcpBuildData `json:"ocpBuildData,omitempty"`
+// SourceRevisionSpec defines the desired state of SourceRevision
+type SourceRevisionSpec struct {
+	ComponentName string `json:"componentName"`
+	CommitHash    string `json:"commitHash,omitempty"`
 }
 
-// ReleaseStreamStatus defines the observed state of ReleaseStream
-type ReleaseStreamStatus struct {
-}
-
-type ReleaseStreamOcpBuildData struct {
-	Git OcpBuildDataGitSource `json:"git,omitempty"`
-}
-
-type OcpBuildDataGitSource struct {
-	Url string `json:"url"`
-	Ref string `json:"ref"`
-	Path string `json:"path,omitempty"`
+// SourceRevisionStatus defines the observed state of SourceRevision
+type SourceRevisionStatus struct {
 }
