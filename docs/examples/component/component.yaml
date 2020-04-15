@@ -1,0 +1,7 @@
+note: Component Example
+sample: |
+  apiVersion: art.openshift.io/v1alpha1
+  kind: Component
+  metadata:
+    name: component-example
+  spec:

@@ -19,16 +19,18 @@ limitations under the License.
 package main
 
 import (
+	_ "github.com/go-openapi/loads"
 	// Make sure dep tools picks up these dependencies
 	_ "k8s.io/apimachinery/pkg/apis/meta/v1"
-	_ "github.com/go-openapi/loads"
+	"sigs.k8s.io/apiserver-builder-alpha/pkg/apiserver"
 
-	"sigs.k8s.io/apiserver-builder-alpha/pkg/cmd/server"
 	_ "k8s.io/client-go/plugin/pkg/client/auth" // Enable cloud provider auth
+	"sigs.k8s.io/apiserver-builder-alpha/pkg/cmd/server"
 
 	"github.com/vfreex/release-apiserver/pkg/apis"
 	"github.com/vfreex/release-apiserver/pkg/openapi"
 	_ "github.com/vfreex/release-apiserver/plugin/admission/install"
+	"k8s.io/apiserver/pkg/authorization/authorizerfactory"
 )
 
 func main() {
@@ -41,7 +43,13 @@ func main() {
 		Title:            "Api",
 		Version:          version,
 
-		// TweakConfigFuncs []func(apiServer *apiserver.Config) error
+		TweakConfigFuncs: []func(config *apiserver.Config) error {
+			func(config *apiserver.Config) error {
+				// Currently we only permit system:masters and art:apiclients groups to use this apiserver
+				config.RecommendedConfig.Authorization.Authorizer = authorizerfactory.NewPrivilegedGroups("system:masters", "art:apiclients")
+				return nil
+			},
+		},
 		// FlagConfigFuncs []func(*cobra.Command) error
 	})
 	if err != nil {

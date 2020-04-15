@@ -1,0 +1,7 @@
+note: SourceRevision Example
+sample: |
+  apiVersion: art.openshift.io/v1alpha1
+  kind: SourceRevision
+  metadata:
+    name: sourcerevision-example
+  spec:

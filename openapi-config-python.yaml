@@ -1,0 +1,5 @@
+# See `openapi-generator config-help -g python`
+projectName: openshift-release
+packageName: openshift_release
+packageVersion: 0.0.2
+library: urllib3 # seems asyncio requires Python 3.7+

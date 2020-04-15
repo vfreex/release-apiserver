@@ -1,0 +1,7 @@
+note: Advisory Example
+sample: |
+  apiVersion: art.openshift.io/v1alpha1
+  kind: Advisory
+  metadata:
+    name: advisory-example
+  spec:
