@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -27,25 +25,25 @@ import (
 
 // Advisory
 // +k8s:openapi-gen=true
-// +resource:path=advisories,strategy=AdvisoryStrategy
+// +resource:path=advisories,strategy=AdvisoryStrategy,shortNames=ad,categories=all;art
 type Advisory struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
-	Spec   AdvisorySpec   `json:"spec,omitempty"`
-	Status AdvisoryStatus `json:"status,omitempty"`
+	Spec   AdvisorySpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Status AdvisoryStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // AdvisorySpec defines the desired state of Advisory
 type AdvisorySpec struct {
-	Number      int    `json:"number,omitempty"`
-	Impetus     string `json:"impetus,omitempty"`
-	ReleaseName string `json:"releaseName,omitempty"`
-	Instance    string `json:"instance,omitempty"`
+	Number      int32  `json:"number,omitempty" protobuf:"varint,1,opt,name=number"`
+	Impetus     string `json:"impetus,omitempty" protobuf:"bytes,2,opt,name=impetus"`
+	ReleaseName string `json:"releaseName,omitempty" protobuf:"bytes,3,opt,name=releaseName"`
+	Instance    string `json:"instance,omitempty" protobuf:"bytes,4,opt,name=instance"`
 }
 
 // AdvisoryStatus defines the observed state of Advisory
 type AdvisoryStatus struct {
-	LiveID string `json:"liveID,omitempty"`
-	State  string `json:"state,omitempty"`
+	LiveID string `json:"liveID,omitempty" protobuf:"bytes,1,opt,name=liveID"`
+	State  string `json:"state,omitempty" protobuf:"bytes,2,opt,name=state"`
 }

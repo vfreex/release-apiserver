@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -27,13 +25,13 @@ import (
 
 // RPMCompose
 // +k8s:openapi-gen=true
-// +resource:path=rpmcomposes,strategy=RPMComposeStrategy
+// +resource:path=rpmcomposes,strategy=RPMComposeStrategy,shortNames=rc,categories=all;art
 type RPMCompose struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
-	Spec   RPMComposeSpec   `json:"spec,omitempty"`
-	Status RPMComposeStatus `json:"status,omitempty"`
+	Spec   RPMComposeSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Status RPMComposeStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // RPMComposeSpec defines the desired state of RPMCompose

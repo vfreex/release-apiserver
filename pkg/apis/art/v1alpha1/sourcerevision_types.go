@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -27,19 +25,19 @@ import (
 
 // SourceRevision
 // +k8s:openapi-gen=true
-// +resource:path=sourcerevisions,strategy=SourceRevisionStrategy
+// +resource:path=sourcerevisions,strategy=SourceRevisionStrategy,shortNames=sr,categories=all;art
 type SourceRevision struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
-	Spec   SourceRevisionSpec   `json:"spec,omitempty"`
-	Status SourceRevisionStatus `json:"status,omitempty"`
+	Spec   SourceRevisionSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Status SourceRevisionStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 // SourceRevisionSpec defines the desired state of SourceRevision
 type SourceRevisionSpec struct {
-	ComponentName string `json:"componentName"`
-	CommitHash    string `json:"commitHash,omitempty"`
+	ComponentName string `json:"componentName" protobuf:"bytes,1,opt,name=componentName"`
+	CommitHash    string `json:"commitHash,omitempty" protobuf:"bytes,2,opt,name=commitHash"`
 }
 
 // SourceRevisionStatus defines the observed state of SourceRevision

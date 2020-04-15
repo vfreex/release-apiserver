@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 package v1alpha1
 
 import (
@@ -27,36 +25,43 @@ import (
 
 // Component
 // +k8s:openapi-gen=true
-// +resource:path=components,strategy=ComponentStrategy
+// +resource:path=components,strategy=ComponentStrategy,shortNames=cp,categories=all;art
 type Component struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
-	Spec   ComponentSpec   `json:"spec,omitempty"`
-	Status ComponentStatus `json:"status,omitempty"`
+	Spec   ComponentSpec   `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Status ComponentStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
-
 
 // ComponentSpec defines the desired state of Component
 type ComponentSpec struct {
-	Source  ComponentSource  `json:"source,omitempty"`
-	DistGit ComponentDistGit `json:"distGit,omitempty"`
+	Kind    string           `json:"kind,omitempty" protobuf:"bytes,1,opt,name=kind"`
+	Image   ComponentImage   `json:"image,omitempty" protobuf:"bytes,2,opt,name=image"`
+	Source  ComponentSource  `json:"source,omitempty" protobuf:"bytes,3,opt,name=source"`
+	DistGit ComponentDistGit `json:"distGit,omitempty" protobuf:"bytes,4,opt,name=distGit"`
+}
+
+type ComponentImage struct {
+	Repository string `json:"repository" protobuf:"bytes,1,opt,name=repository"`
+	Namespace  string `json:"namespace" protobuf:"bytes,2,opt,name=namespace"`
 }
 
 type ComponentSource struct {
-	Git ComponentGitSource `json:"git,omitempty"`
+	Git ComponentGitSource `json:"git,omitempty" protobuf:"bytes,1,opt,name=git"`
 }
 
 type ComponentGitSource struct {
-	Url  string `json:"url"`
-	Ref  string `json:"ref"`
-	Path string `json:"path,omitempty"`
+	Url         string `json:"url" protobuf:"bytes,1,opt,name=url"`
+	Ref         string `json:"ref" protobuf:"bytes,2,opt,name=ref"`
+	FallbackRef string `json:"fallbackRef,omitempty" protobuf:"bytes,3,opt,name=fallbackRef"`
+	Path        string `json:"path,omitempty" protobuf:"bytes,4,opt,name=path"`
 }
 
 type ComponentDistGit struct {
-	Namespace  string `json:"namespace"`
-	Repository string `json:"repository"`
-	Instance   string `json:"instance,omitempty"`
+	Namespace  string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
+	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
+	Instance   string `json:"instance,omitempty" protobuf:"bytes,3,opt,name=instance"`
 }
 
 // ComponentStatus defines the observed state of Component

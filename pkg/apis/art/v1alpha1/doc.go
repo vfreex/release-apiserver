@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 The OpenShift Release APIServer Authors.
 
@@ -15,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 // Api versions allow the api contract for a resource to be changed while keeping
 // backward compatibility by support multiple concurrent versions
 // of the same resource
@@ -30,4 +28,3 @@ limitations under the License.
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=art.openshift.io
 package v1alpha1 // import "github.com/vfreex/release-apiserver/pkg/apis/art/v1alpha1"
-

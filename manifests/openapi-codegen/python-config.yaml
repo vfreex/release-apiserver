@@ -1,0 +1,4 @@
+projectName: openshift-release
+packageName: openshift_release
+packageVersion: 0.0.1
+library: asyncio
