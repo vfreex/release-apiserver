@@ -1,0 +1,13 @@
+apiVersion: art.openshift.io/v1alpha1
+kind: Advisory
+metadata:
+  name: openshift-4.4.0-image-advisory
+  labels:
+    release-stream: openshift-4.4
+    release: openshift-4.4.0-rc.8
+    impetus: image
+spec:
+  number: 47983
+  impetus: image
+  releaseName: openshift-4.4.0-rc.8
+  instance: errata.devel.redhat.com

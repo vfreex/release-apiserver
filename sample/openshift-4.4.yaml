@@ -1,0 +1,12 @@
+apiVersion: art.openshift.io/v1alpha1
+kind: ReleaseStream
+metadata:
+  name: openshift-4.4
+  labels:
+    release-stream: openshift-4.4
+spec:
+  ocpBuildData:
+    git:
+      url: https://github.com/openshift/ocp-build-data.git
+      ref: openshift-4.4
+      path: .

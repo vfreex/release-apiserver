@@ -1,0 +1,7 @@
+note: RPMCompose Example
+sample: |
+  apiVersion: art.openshift.io/v1alpha1
+  kind: RPMCompose
+  metadata:
+    name: rpmcompose-example
+  spec:
