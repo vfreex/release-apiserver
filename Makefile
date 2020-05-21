@@ -20,16 +20,9 @@ run: apiserver controller-manager
 		--secure-port=9443 \
 		--insecure-port=8080 \
 		--insecure-bind-address=127.0.0.1 \
-		--tls-cert-file=apiserver.local.config/certificates/apiserver.crt \
-		--tls-private-key-file=apiserver.local.config/certificates/apiserver.key \
 		--storage-media-type=application/vnd.kubernetes.protobuf \
-		--delegated-auth \
-		--authentication-skip-lookup \
-	    -v=10 \
-		--client-ca-file config/certificates/ca.crt \
-	    --kubeconfig=$$HOME/.kube/config \
-		--authentication-kubeconfig=$$HOME/.kube/config \
-		--authorization-kubeconfig=$$HOME/.kube/config \
+	    -v=7 \
+		--client-ca-file ca.crt \
 		--disable-admission-plugins=MutatingAdmissionWebhook \
 	    --disable-admission-plugins=ValidatingAdmissionWebhook
 test:
